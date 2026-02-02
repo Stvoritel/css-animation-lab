@@ -149,750 +149,602 @@
         .theme-selector { background: rgba(20, 20, 60, 0.7); border-radius: 18px; padding: 20px; margin-bottom: 30px; border: 1px solid rgba(168, 85, 247, 0.4); }
         .theme-selector h4 { color: var(--primary-color); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; }
         .theme-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-        .theme-option { padding: 10px; background: rgba(255, 255, 255, 0.05); border-radius: 10px; cursor: pointer; transition: all 0.3s; font-size: 0.9rem; color: var(--text-secondary); text-align: center; border: 2px solid transparent; }
-        .theme-option:hover { background: rgba(0, 243, 255, 0.1); transform: translateY(-2px); }
-        .theme-option.active { background: rgba(0, 243, 255, 0.2); border-color: var(--primary-color); color: var(--primary-color); box-shadow: 0 0 15px rgba(0, 243, 255, 0.3); }
+        .theme-option { padding: 10px; background: rgba(255, 255, 255, 0.05); border-radius: 10px; cursor: pointer; transition: all 0.3s; font-size: 0.9rem; text-align: center; color: var(--text-secondary); border: 1px solid transparent; }
+        .theme-option:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--primary-color); color: var(--primary-color); }
+        .theme-option.active { background: rgba(0, 243, 255, 0.2); border-color: var(--primary-color); color: var(--primary-color); font-weight: bold; }
 
-        .main-content { margin-left: 320px; padding: 40px 60px; position: relative; z-index: 1; }
-        .header { text-align: center; padding: 40px 0 30px; }
-        .header h1 { font-size: 4.2rem; font-weight: 900; background: linear-gradient(90deg, var(--text-color), var(--secondary-color), var(--text-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; text-shadow: 0 0 40px rgba(168, 85, 247, 0.6); letter-spacing: 1px; }
-        .header p { font-size: 1.6rem; color: var(--text-secondary); margin-bottom: 30px; font-weight: 300; }
+        .main-content { margin-left: 320px; padding: 40px 50px; min-height: 100vh; }
 
-        .upload-container { position: relative; display: inline-block; margin: 30px 0; }
-        .upload-btn { position: relative; display: inline-flex; align-items: center; gap: 15px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 20px; padding: 25px 60px; font-size: 1.8rem; font-weight: bold; color: white; cursor: pointer; transition: all 0.3s; text-align: center; min-width: 300px; box-shadow: inset 0 0 30px rgba(0, 243, 255, 0.2), 0 0 40px rgba(0, 243, 255, 0.3); z-index: 2; overflow: hidden; }
-        .upload-btn::before { content: ''; position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; background: conic-gradient(from 0deg, var(--primary-color), var(--secondary-color), var(--primary-color)); border-radius: 25px; z-index: -1; animation: rotate 4s linear infinite; opacity: 0; transition: opacity 0.3s; }
-        .upload-btn:hover::before { opacity: 1; }
-        .upload-btn:hover { transform: scale(1.05); box-shadow: inset 0 0 40px rgba(0, 243, 255, 0.3), 0 0 60px rgba(0, 243, 255, 0.6); border-color: var(--primary-color); }
-        @keyframes rotate { 100% { transform: rotate(360deg); } }
+        .hero { text-align: center; padding: 60px 20px 100px; position: relative; overflow: hidden; border-radius: 30px; background: linear-gradient(135deg, rgba(10, 10, 40, 0.9) 0%, rgba(5, 5, 20, 0.95) 100%); border: 1px solid rgba(0, 243, 255, 0.3); box-shadow: 0 20px 60px rgba(0, 0, 30, 0.8); margin-bottom: 60px; }
+        .hero h1 { font-size: 4rem; margin-bottom: 20px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 30px rgba(0, 243, 255, 0.5); font-weight: 800; letter-spacing: 1px; }
+        .hero p { font-size: 1.5rem; max-width: 800px; margin: 0 auto 40px; color: var(--text-secondary); line-height: 1.6; }
+        .hero-actions { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 18px 35px; border-radius: 15px; font-size: 1.2rem; font-weight: bold; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 12px; }
+        .btn-primary { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: black; box-shadow: 0 5px 20px rgba(0, 243, 255, 0.4); }
+        .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 243, 255, 0.6); }
+        .btn-secondary { background: rgba(255, 255, 255, 0.1); color: var(--text-color); border: 2px solid var(--primary-color); backdrop-filter: blur(10px); }
+        .btn-secondary:hover { background: rgba(0, 243, 255, 0.2); transform: translateY(-5px); }
 
-        .broken-glass { position: absolute; top: -20px; left: -20px; right: -20px; bottom: -20px; z-index: 1; pointer-events: none; }
-        .glass-shard { position: absolute; background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.4); clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); animation: glassShine 3s infinite; box-shadow: 0 0 15px rgba(0, 243, 255, 0.5); opacity: 0.7; }
-        @keyframes glassShine { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 0.9; transform: scale(1.1); } }
-
-        .avatar-item { width: 240px; text-align: center; position: relative; transition: transform 0.3s; }
-        .avatar-frame { width: 200px; height: 200px; border-radius: 50%; margin: 0 auto 25px; border: 3px solid transparent; overflow: hidden; background: var(--bg-medium); position: relative; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(0, 243, 255, 0.3); }
-        .avatar-frame::before { content: ''; position: absolute; top: -5px; left: -5px; right: -5px; bottom: -5px; background: conic-gradient(from 0deg, var(--primary-color), var(--secondary-color), var(--primary-color)); border-radius: 50%; z-index: -1; opacity: 0; transition: opacity 0.3s; }
-        .avatar-frame:hover::before { opacity: 1; animation: rotate 2s linear infinite; }
-        .avatar-frame:hover { border-color: var(--primary-color); box-shadow: 0 0 40px rgba(0, 243, 255, 0.8), inset 0 0 20px rgba(0, 243, 255, 0.2); transform: scale(1.02); }
-        .avatar-image { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; transition: transform 0.5s; }
-        .avatar-image:hover { transform: scale(1.05); }
-        .avatar-name { font-size: 1.8rem; font-weight: bold; color: var(--primary-color); margin-bottom: 10px; text-shadow: 0 0 10px rgba(0, 243, 255, 0.5); transition: color 0.3s; }
-        .avatar-item:hover .avatar-name { color: var(--text-color); text-shadow: 0 0 15px rgba(0, 243, 255, 0.8); }
-        .avatar-label { color: var(--text-secondary); font-size: 1rem; margin-bottom: 20px; min-height: 40px; }
-        .play-voice-btn { background: linear-gradient(90deg, var(--secondary-color), var(--primary-color)); color: white; border: none; border-radius: 50px; padding: 14px 28px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 0 25px rgba(168, 85, 247, 0.5); }
-        .play-voice-btn:hover { transform: scale(1.1); box-shadow: 0 0 35px rgba(168, 85, 247, 0.8); }
-        .play-voice-btn i { margin-right: 10px; font-size: 1.3rem; }
-
-        .avatars-slider { display: flex; justify-content: center; gap: 50px; margin-top: 60px; flex-wrap: wrap; }
-        .section-title { font-size: 3rem; margin-bottom: 60px; color: var(--text-color); position: relative; display: inline-block; text-align: center; width: 100%; }
-        .section-title::after { content: ''; position: absolute; width: 120%; height: 6px; background: linear-gradient(90deg, transparent, var(--primary-color), var(--secondary-color), transparent); bottom: -20px; left: -10%; border-radius: 3px; }
-        .center-text { text-align: center; margin: 20px 0; }
-
-        .how-it-works-section { text-align: center; margin: 80px 0; padding: 40px 20px; background: rgba(10, 10, 40, 0.6); border-radius: 30px; border: 2px solid rgba(168, 85, 247, 0.3); }
-        .steps-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-top: 50px; max-width: 1200px; margin-left: auto; margin-right: auto; }
-        .step { padding: 25px; background: rgba(20, 20, 60, 0.7); border-radius: 20px; transition: all 0.3s; border: 2px solid transparent; position: relative; overflow: hidden; }
-        .step::before { content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; background: conic-gradient(from 0deg, var(--primary-color), var(--secondary-color), var(--primary-color)); border-radius: 22px; z-index: -1; opacity: 0; transition: opacity 0.3s; }
-        .step:hover::before { opacity: 1; animation: rotate 2s linear infinite; }
-        .step:hover { transform: translateY(-10px); border-color: var(--primary-color); box-shadow: 0 15px 30px rgba(0, 243, 255, 0.2); }
-        .step-icon { font-size: 3.5rem; margin-bottom: 15px; }
-        .step h3 { color: var(--primary-color); margin-bottom: 10px; font-size: 1.4rem; }
-
-        .ar-section { display: flex; align-items: center; justify-content: space-between; margin: 120px 0; padding: 60px; background: rgba(10, 10, 40, 0.6); border-radius: 40px; border: 2px solid rgba(0, 243, 255, 0.4); position: relative; overflow: hidden; }
-        .ar-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://i.postimg.cc/Xph57GK4/chlapazena.png') center/cover no-repeat; opacity: 0.15; filter: brightness(0.5) sepia(0.3) hue-rotate(180deg); border-radius: 40px; z-index: 1; }
-        .ar-text { max-width: 500px; z-index: 2; position: relative; }
-        .ar-text h2 { font-size: 3rem; margin-bottom: 30px; color: var(--text-color); line-height: 1.2; text-shadow: 0 0 20px rgba(0, 243, 255, 0.7); }
-        .ar-text p { font-size: 1.4rem; color: var(--text-secondary); line-height: 1.6; }
-        .ar-mockup { width: 400px; height: 500px; background: #111; border-radius: 40px; border: 8px solid #222; position: relative; overflow: hidden; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8); z-index: 2; }
-        .ar-screen { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; border-radius: 32px; }
-        .tablet-image { width: 100%; height: 100%; object-fit: cover; border-radius: 32px; position: absolute; top: 0; left: 0; }
-        .iphone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 180px; height: 30px; background: #222; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; z-index: 3; }
-
-        .vr-section { display: flex; align-items: center; justify-content: space-between; margin: 120px 0; padding: 60px; background: rgba(40, 10, 60, 0.6); border-radius: 40px; border: 2px solid rgba(168, 85, 247, 0.4); position: relative; overflow: hidden; }
-        .vr-section::before { content: ''; position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%); opacity: 0.5; }
-        .vr-text { max-width: 500px; z-index: 2; }
-        .vr-text h2 { font-size: 3rem; margin-bottom: 30px; color: var(--text-color); line-height: 1.2; }
-        .vr-text p { font-size: 1.4rem; color: var(--text-secondary); line-height: 1.6; }
-        .vr-visual { width: 500px; height: 400px; background: #111; border-radius: 30px; overflow: hidden; position: relative; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8); z-index: 2; }
-        .vr-environment { width: 100%; height: 100%; position: relative; background: radial-gradient(circle at 30% 20%, rgba(0, 100, 100, 0.3) 0%, rgba(50, 0, 100, 0.4) 50%, rgba(0, 0, 30, 0.8) 100%); }
-        .vr-crystals { position: absolute; width: 100%; height: 100%; }
-        .crystal { position: absolute; background: rgba(0, 243, 255, 0.6); clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); animation: crystalGlow 4s infinite; }
-        .crystal1 { top: 20%; left: 20%; width: 40px; height: 60px; }
-        .crystal2 { top: 60%; left: 70%; width: 30px; height: 50px; animation-delay: 1s; }
-        .crystal3 { top: 40%; left: 40%; width: 50px; height: 70px; animation-delay: 2s; }
-        @keyframes crystalGlow { 0%, 100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 1; transform: scale(1.1); } }
-        .vr-platform { position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); width: 300px; height: 100px; background: rgba(255, 255, 255, 0.1); border-radius: 20px; display: flex; justify-content: space-around; align-items: center; padding: 0 20px; }
-        .vr-avatar { width: 50px; height: 80px; border-radius: 10px; animation: avatarFloat 3s infinite ease-in-out; }
-        .vr-avatar.cyberpunk { background: linear-gradient(180deg, var(--primary-color), #0033aa); }
-        .vr-avatar.nature { background: linear-gradient(180deg, var(--accent-color), #006633); animation-delay: 0.5s; }
-        .vr-avatar.energy { background: linear-gradient(180deg, var(--secondary-color), #5500aa); animation-delay: 1s; }
-        @keyframes avatarFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
-        footer { text-align: center; margin-top: 80px; padding: 40px 0; border-top: 1px solid rgba(255, 255, 255, 0.1); }
-        footer p { font-size: 1.1rem; color: var(--text-secondary); margin: 10px 0; }
-
-        .upload-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 2000; align-items: center; justify-content: center; backdrop-filter: blur(10px); }
-        .modal-content { background: rgba(10, 10, 40, 0.95); border-radius: 30px; padding: 40px; width: 90%; max-width: 800px; max-height: 80vh; border: 2px solid var(--primary-color); box-shadow: 0 0 50px rgba(0, 243, 255, 0.5); text-align: center; overflow-y: auto; position: relative; }
-        .close-modal { position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; opacity: 0.7; transition: opacity 0.3s; z-index: 10; }
-        .close-modal:hover { opacity: 1; }
-        .modal-step { display: none; }
-        .modal-step.active { display: block; animation: fadeIn 0.5s; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .modal-title { font-size: 2.5rem; margin-bottom: 15px; color: var(--primary-color); }
-        .modal-instruction { font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6; }
-
-        .upload-area { border: 3px dashed var(--primary-color); border-radius: 20px; padding: 60px 40px; margin: 20px 0; background: rgba(0, 243, 255, 0.05); cursor: pointer; transition: all 0.3s; }
-        .upload-area:hover { background: rgba(0, 243, 255, 0.1); border-color: var(--secondary-color); }
-        .upload-area i { font-size: 4rem; color: var(--primary-color); margin-bottom: 20px; }
-        .video-preview { width: 100%; max-width: 400px; border-radius: 20px; border: 3px solid var(--primary-color); margin: 20px auto; display: none; }
-
-        .video-requirements { background: rgba(0, 100, 100, 0.1); border-radius: 15px; padding: 25px; margin: 25px 0; border-left: 4px solid var(--accent-color); }
-        .video-requirements h4 { color: var(--accent-color); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        .requirements-list { list-style: none; text-align: left; }
-        .requirements-list li { padding: 10px 0; color: var(--text-secondary); border-bottom: 1px dashed rgba(255, 255, 255, 0.1); display: flex; align-items: flex-start; gap: 15px; }
-        .requirements-list li:last-child { border-bottom: none; }
-        .requirements-list i.fa-check-circle { color: var(--accent-color); font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
-        .expressions-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; margin-left: 30px; }
-        .expression-tag { background: rgba(255, 255, 255, 0.1); padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; border: 1px solid rgba(255, 255, 255, 0.2); }
-
-        .avatar-selection { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 20px 0; max-height: 300px; overflow-y: auto; padding: 10px; }
-        .avatar-option { background: rgba(20, 20, 60, 0.8); border-radius: 20px; padding: 20px; border: 3px solid transparent; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; min-height: 280px; }
-        .avatar-option:hover { transform: translateY(-5px); border-color: var(--primary-color); }
-        .avatar-option.recommended { border-color: var(--accent-color); box-shadow: 0 0 30px rgba(0, 255, 170, 0.3); }
-        .recommended-badge { position: absolute; top: 10px; right: 10px; background: var(--accent-color); color: #000; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; }
-        .avatar-option-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid currentColor; }
-        .match-percentage { font-size: 1.5rem; font-weight: bold; margin: 10px 0; }
-        .match-percentage.high { color: var(--accent-color); }
-        .match-percentage.medium { color: var(--warning-color); }
-        .match-percentage.low { color: var(--error-color); }
-        .avatar-name { font-size: 1.2rem; margin: 10px 0; color: var(--primary-color); }
-
-        .upload-buttons { display: flex; gap: 20px; justify-content: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
-        .btn-upload, .btn-back, .btn-select { padding: 12px 25px; border-radius: 50px; border: none; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s; min-width: 150px; }
-        .btn-upload, .btn-select { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: white; }
-        .btn-back { background: rgba(255, 255, 255, 0.1); color: white; border: 2px solid rgba(255, 255, 255, 0.3); }
-        .btn-upload:hover, .btn-select:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(168, 85, 247, 0.8); }
-        .btn-back:hover { background: rgba(255, 255, 255, 0.2); }
-
-        .pricing-cards { display: flex; justify-content: center; gap: 25px; margin-top: 60px; flex-wrap: wrap; }
-        .pricing-card { width: 300px; background: rgba(255, 255, 255, 0.05); border-radius: 30px; padding: 30px 25px; border: 2px solid rgba(255, 255, 255, 0.1); position: relative; overflow: hidden; backdrop-filter: blur(15px); transition: transform 0.4s, border-color 0.4s; }
-        .pricing-card:hover { transform: translateY(-20px); border-color: var(--primary-color); box-shadow: 0 30px 60px rgba(0, 243, 255, 0.3); }
-        .pricing-card.popular { border-color: var(--accent-color); transform: scale(1.05); }
-        .pricing-card.popular:hover { transform: translateY(-20px) scale(1.05); }
-        .popular-badge { position: absolute; top: 15px; right: 15px; background: var(--accent-color); color: #000; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; }
-        .coming-soon { background: linear-gradient(90deg, var(--secondary-color), var(--primary-color)); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; margin-bottom: 10px; display: inline-block; }
-        .pricing-card h3 { font-size: 2rem; margin-bottom: 15px; color: var(--text-color); }
-        .price { font-size: 3.2rem; font-weight: 900; margin: 20px 0; color: var(--primary-color); text-shadow: 0 0 20px rgba(0, 243, 255, 0.5); }
-        .price span { font-size: 1.1rem; color: var(--text-secondary); font-weight: normal; }
-        .pricing-features { list-style: none; margin-bottom: 30px; text-align: left; padding-left: 10px; min-height: 250px; }
-        .pricing-features li { padding: 12px 0; color: var(--text-secondary); border-bottom: 1px dashed rgba(255, 255, 255, 0.1); font-size: 1rem; }
-        .pricing-features li:last-child { border-bottom: none; }
-        .pricing-features li i.fa-check { color: var(--accent-color); margin-right: 15px; font-size: 1.1rem; }
-        .pricing-features li i.fa-times { color: var(--error-color); margin-right: 15px; font-size: 1.1rem; }
-        .subscribe-btn { display: block; width: 100%; padding: 18px; background: linear-gradient(90deg, var(--secondary-color), var(--primary-color)); color: white; border: none; border-radius: 20px; font-weight: bold; font-size: 1.2rem; cursor: pointer; transition: all 0.3s; box-shadow: 0 0 30px rgba(168, 85, 247, 0.5); }
-        .subscribe-btn.waitlist { background: linear-gradient(90deg, var(--primary-color), #0033aa); }
-        .subscribe-btn:hover { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); box-shadow: 0 0 40px rgba(168, 85, 247, 0.8); transform: scale(1.05); }
-        .pricing-note { margin-top: 40px; padding: 25px; background: rgba(0, 100, 100, 0.1); border-radius: 15px; border-left: 4px solid var(--accent-color); display: flex; align-items: center; justify-content: center; gap: 15px; }
-        .pricing-note i { color: var(--accent-color); font-size: 1.8rem; }
-        .pricing-note p { color: var(--text-secondary); font-size: 1.1rem; }
-
-        .page { display: none; }
-        .page.active { display: block; }
-        .page-header { margin-bottom: 40px; }
-        .page-header h2 { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 10px; display: flex; align-items: center; gap: 15px; }
-        .page-header p { font-size: 1.2rem; color: var(--text-secondary); }
-
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; }
-        .feature-card { background: rgba(20, 20, 60, 0.7); border-radius: 20px; padding: 30px; border: 2px solid rgba(0, 243, 255, 0.3); transition: all 0.3s; text-align: center; position: relative; overflow: hidden; min-height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        .feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); opacity: 0.7; }
-        .feature-card:hover { transform: translateY(-10px); border-color: var(--primary-color); box-shadow: 0 20px 40px rgba(0, 243, 255, 0.3); }
-        .feature-card i { font-size: 3rem; color: var(--primary-color); margin-bottom: 20px; }
-        .feature-card h3 { color: var(--text-color); margin-bottom: 15px; font-size: 1.5rem; }
-        .feature-card p { color: var(--text-secondary); margin-bottom: 20px; }
-        .card-btn { padding: 12px 25px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border: none; border-radius: 50px; color: white; font-weight: bold; cursor: pointer; transition: all 0.3s; }
-        .card-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(168, 85, 247, 0.5); }
-
-        .profile-photo-section { background: rgba(20, 20, 60, 0.7); border-radius: 20px; padding: 30px; margin-bottom: 30px; border: 2px solid rgba(0, 243, 255, 0.3); }
-        .profile-photo-container { display: flex; flex-direction: column; align-items: center; gap: 25px; margin-top: 20px; }
-        .profile-photo-preview { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary-color); box-shadow: 0 0 30px rgba(0, 243, 255, 0.4); background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--text-secondary); position: relative; overflow: hidden; }
-        .profile-photo-preview.has-photo { border-color: var(--accent-color); }
-        .profile-photo-actions { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
-        .profile-photo-btn { padding: 12px 20px; background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: var(--text-color); cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 10px; font-weight: 500; }
-        .profile-photo-btn:hover { background: rgba(0, 243, 255, 0.1); border-color: var(--primary-color); transform: translateY(-2px); }
-        .profile-photo-btn.upload { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border: none; color: white; }
-        .profile-photo-btn.delete { background: rgba(255, 50, 50, 0.1); border-color: rgba(255, 50, 50, 0.3); color: var(--error-color); }
-        .profile-photo-btn.delete:hover { background: rgba(255, 50, 50, 0.2); border-color: var(--error-color); }
-        .profile-photo-upload-area { border: 3px dashed var(--primary-color); border-radius: 15px; padding: 30px; width: 100%; max-width: 400px; text-align: center; background: rgba(0, 243, 255, 0.05); cursor: pointer; transition: all 0.3s; margin: 10px 0; }
-        .profile-photo-upload-area:hover { background: rgba(0, 243, 255, 0.1); border-color: var(--accent-color); }
-        .profile-photo-upload-area i { font-size: 3rem; color: var(--primary-color); margin-bottom: 15px; }
-        .profile-photo-input { display: none; }
-        .profile-photo-crop-container { display: none; margin: 20px 0; width: 100%; max-width: 400px; }
-        .profile-photo-crop-container.active { display: block; }
-        .crop-controls { display: flex; gap: 10px; margin-top: 15px; justify-content: center; }
-        .crop-btn { padding: 10px 20px; background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: var(--text-color); cursor: pointer; transition: all 0.3s; }
-        .crop-btn:hover { background: rgba(0, 243, 255, 0.1); }
-        .crop-btn.apply { background: linear-gradient(90deg, var(--accent-color), var(--primary-color)); border: none; color: white; }
-        .profile-photo-info { background: rgba(0, 100, 100, 0.1); border-radius: 10px; padding: 15px; margin-top: 20px; font-size: 0.9rem; color: var(--text-secondary); border-left: 3px solid var(--accent-color); }
-
-        .settings-container { max-width: 900px; margin: 0 auto; }
-        .settings-section { background: rgba(20, 20, 60, 0.7); border-radius: 20px; padding: 30px; margin-bottom: 30px; border: 2px solid rgba(0, 243, 255, 0.3); }
-        .settings-section h3 { color: var(--primary-color); margin-bottom: 25px; font-size: 1.8rem; display: flex; align-items: center; gap: 15px; }
-        .settings-group { margin-bottom: 25px; }
-        .settings-group label { display: block; color: var(--text-color); margin-bottom: 10px; font-weight: bold; }
-        .settings-input { width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: var(--text-color); font-size: 1rem; transition: all 0.3s; }
-        .settings-input:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 15px rgba(0, 243, 255, 0.3); }
+        .avatar-creation-section { background: rgba(10, 10, 40, 0.7); padding: 40px; border-radius: 25px; margin-bottom: 60px; border: 1px solid rgba(168, 85, 247, 0.4); box-shadow: 0 15px 40px rgba(0, 0, 30, 0.6); }
+        .section-title { font-size: 2.5rem; margin-bottom: 30px; color: var(--primary-color); display: flex; align-items: center; gap: 15px; }
+        .section-title i { font-size: 2.2rem; }
+        .avatar-creation-section.disabled { opacity: 0.5; pointer-events: none; }
         
-        select.settings-input {
-            background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: var(--text-color); padding: 15px; width: 100%; font-size: 1rem; transition: all 0.3s; appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2300f3ff' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat; background-position: right 15px center; background-size: 16px; padding-right: 40px;
+        .video-upload-container { background: rgba(5, 5, 20, 0.8); padding: 30px; border-radius: 20px; border: 2px dashed var(--primary-color); text-align: center; margin-bottom: 30px; }
+        .video-upload-label { display: block; font-size: 1.3rem; margin-bottom: 20px; color: var(--text-color); }
+        .video-upload-input { display: none; }
+        .video-upload-button { background: var(--accent-color); color: black; padding: 15px 30px; border-radius: 12px; font-size: 1.2rem; font-weight: bold; cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s; }
+        .video-upload-button:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(0, 255, 170, 0.5); }
+        .video-preview { margin-top: 20px; max-width: 500px; margin-left: auto; margin-right: auto; border-radius: 15px; overflow: hidden; border: 2px solid var(--primary-color); }
+        .video-preview video { width: 100%; display: block; }
+        
+        .avatar-actions { display: flex; gap: 20px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
+        .btn-create { background: linear-gradient(90deg, var(--accent-color), #00cc88); color: black; padding: 20px 40px; font-size: 1.3rem; border-radius: 15px; border: none; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 15px; transition: all 0.3s; }
+        .btn-create:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 255, 170, 0.6); }
+        .btn-create:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        .examples-section { margin-bottom: 60px; }
+        .examples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px; }
+        .example-avatar-card { background: rgba(20, 20, 60, 0.7); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s; }
+        .example-avatar-card:hover { transform: translateY(-10px); border-color: var(--primary-color); box-shadow: 0 15px 40px rgba(0, 243, 255, 0.3); }
+        .example-avatar-image { height: 200px; background-size: cover; background-position: center; }
+        .example-avatar-info { padding: 25px; }
+        .example-avatar-info h4 { font-size: 1.5rem; margin-bottom: 10px; color: var(--primary-color); }
+        .example-avatar-info p { color: var(--text-secondary); margin-bottom: 20px; line-height: 1.5; }
+        .btn-try-example { background: rgba(255, 255, 255, 0.1); color: var(--text-color); border: 1px solid var(--primary-color); padding: 10px 20px; border-radius: 10px; cursor: pointer; transition: all 0.3s; }
+        .btn-try-example:hover { background: rgba(0, 243, 255, 0.2); }
+
+        .created-avatars-section { margin-bottom: 60px; }
+        .created-avatars-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
+        .avatar-card { background: rgba(20, 20, 60, 0.7); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s; }
+        .avatar-card:hover { border-color: var(--accent-color); }
+        .avatar-thumbnail { height: 180px; background-size: cover; background-position: center; background-color: #1a1a3a; }
+        .avatar-info { padding: 25px; }
+        .avatar-info h4 { font-size: 1.4rem; margin-bottom: 10px; color: var(--primary-color); }
+        .avatar-info p { color: var(--text-secondary); margin-bottom: 8px; font-size: 0.95rem; }
+        .avatar-actions { display: flex; gap: 15px; margin-top: 20px; }
+        .btn-view-ar, .btn-delete { padding: 10px 20px; border-radius: 10px; font-weight: bold; cursor: pointer; border: none; transition: all 0.3s; }
+        .btn-view-ar { background: var(--primary-color); color: black; }
+        .btn-view-ar:hover { background: #00d4e0; }
+        .btn-delete { background: rgba(255, 50, 50, 0.2); color: #ff5555; border: 1px solid #ff5555; }
+        .btn-delete:hover { background: rgba(255, 50, 50, 0.4); }
+
+        .gdpr-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 10, 0.95);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 30px;
         }
-        select.settings-input option { background-color: var(--bg-dark); color: var(--text-color); padding: 10px; }
-        
-        .toggle-switch { position: relative; display: inline-block; width: 60px; height: 30px; }
-        .toggle-switch input { opacity: 0; width: 0; height: 0; }
-        .toggle-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.1); transition: .4s; border-radius: 34px; }
-        .toggle-slider:before { position: absolute; content: ""; height: 22px; width: 22px; left: 4px; bottom: 4px; background-color: var(--primary-color); transition: .4s; border-radius: 50%; }
-        input:checked + .toggle-slider { background-color: rgba(0, 243, 255, 0.3); }
-        input:checked + .toggle-slider:before { transform: translateX(30px); }
-        .settings-row { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        .settings-row:last-child { border-bottom: none; }
-        .btn-save { padding: 15px 30px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border: none; border-radius: 10px; color: white; font-weight: bold; cursor: pointer; transition: all 0.3s; font-size: 1.1rem; }
-        .btn-save:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(168, 85, 247, 0.4); }
-
-        .privacy-flow-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 3000; align-items: center; justify-content: center; backdrop-filter: blur(20px); overflow: hidden; }
-        .privacy-option { display: flex; align-items: center; background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 15px; margin-bottom: 10px; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .privacy-toggle { display: flex; align-items: center; gap: 15px; cursor: pointer; width: 100%; }
-        .privacy-toggle input[type="checkbox"] { display: none; }
-        .privacy-toggle .toggle-slider { position: relative; width: 50px; height: 26px; background: rgba(255, 255, 255, 0.1); border-radius: 13px; transition: all 0.3s; flex-shrink: 0; }
-        .privacy-toggle .toggle-slider:before { content: ''; position: absolute; width: 20px; height: 20px; background: var(--text-color); border-radius: 50%; top: 3px; left: 3px; transition: all 0.3s; }
-        .privacy-toggle input:checked + .toggle-slider { background: var(--primary-color); }
-        .privacy-toggle input:checked + .toggle-slider:before { transform: translateX(24px); background: white; }
-        .privacy-text { flex-grow: 1; }
-        .privacy-text strong { display: block; color: var(--text-color); margin-bottom: 5px; }
-        .privacy-text small { color: var(--text-secondary); font-size: 0.9rem; }
-        .privacy-flow-content { background: rgba(10, 10, 40, 0.98); border-radius: 30px; padding: 50px; width: 90%; max-width: 700px; max-height: 90vh; border: 3px solid var(--primary-color); box-shadow: 0 0 80px rgba(0, 243, 255, 0.5); overflow-y: auto; position: relative; transform: translateZ(0); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
-        .privacy-step { display: none; opacity: 0; transform: translateY(20px); transition: opacity 0.3s ease, transform 0.3s ease; }
-        .privacy-step.active { display: block; opacity: 1; transform: translateY(0); }
-        .step-number { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--primary-color); border-radius: 50%; color: #000; font-weight: bold; font-size: 1.5rem; margin-right: 15px; }
-        .privacy-intro { background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 25px; margin: 25px 0; border-left: 4px solid var(--primary-color); }
-        .required { color: var(--error-color); font-size: 0.9rem; margin-left: 10px; }
-        .retention-section, .rights-section { background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 25px; margin: 20px 0; }
-        .retention-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 15px; }
-        .retention-option input { display: none; }
-        .retention-option label { display: block; padding: 20px; background: rgba(255, 255, 255, 0.05); border-radius: 15px; cursor: pointer; transition: all 0.3s; border: 2px solid transparent; }
-        .retention-option input:checked + label { background: rgba(0, 243, 255, 0.15); border-color: var(--primary-color); }
-        .rights-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px; }
-        .right-item { display: flex; align-items: center; gap: 15px; padding: 15px; background: rgba(255, 255, 255, 0.05); border-radius: 10px; }
-        .terms-agreement { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0; }
-        .terms-box { background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 25px; }
-        .terms-option { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px; }
-        .terms-option input { margin-top: 5px; }
-        .consent-summary { background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 25px; }
-        #consentSummary { margin-top: 15px; }
-        .consent-item { padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.9rem; }
-        .consent-item:last-child { border-bottom: none; }
-        .privacy-buttons, .privacy-buttons-final { display: flex; justify-content: space-between; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
-        .btn-skip { padding: 15px 25px; background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 12px; color: white; cursor: pointer; }
-        .btn-next, .btn-back { padding: 15px 30px; background: rgba(0, 243, 255, 0.2); border: 2px solid var(--primary-color); border-radius: 12px; color: var(--primary-color); cursor: pointer; font-weight: bold; }
-        .btn-save-final { padding: 15px 30px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border: none; border-radius: 12px; color: white; font-weight: bold; cursor: pointer; }
-        .btn-save-final:disabled { opacity: 0.5; cursor: not-allowed; }
-        .edit-gdpr-btn { display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; background: rgba(0, 243, 255, 0.1); border: 2px solid var(--primary-color); border-radius: 10px; color: var(--primary-color); cursor: pointer; font-weight: bold; margin-top: 15px; }
-        .edit-gdpr-btn:hover { background: rgba(0, 243, 255, 0.2); }
-
-        .achievements-section { text-align: center; margin: 80px 0; padding: 40px; background: rgba(10, 10, 40, 0.6); border-radius: 30px; border: 2px solid rgba(168, 85, 247, 0.3); }
-        .badges-container { display: flex; justify-content: center; gap: 20px; margin-top: 40px; flex-wrap: wrap; }
-        .badge-item { display: flex; flex-direction: column; align-items: center; width: 100px; padding: 20px; background: rgba(20, 20, 60, 0.7); border-radius: 20px; transition: all 0.3s; cursor: help; position: relative; }
-        .badge-item:hover { transform: translateY(-10px); background: rgba(0, 243, 255, 0.1); }
-        .badge-item.locked { opacity: 0.4; filter: grayscale(0.8); }
-        .badge-item.locked:hover { transform: none; background: rgba(20, 20, 60, 0.7); }
-        .badge-icon { font-size: 3rem; margin-bottom: 10px; }
-        .badge-label { color: var(--primary-color); font-weight: bold; font-size: 0.9rem; }
-        .badge-progress { width: 80%; height: 4px; background: rgba(255, 255, 255, 0.1); border-radius: 2px; margin-top: 8px; overflow: hidden; }
-        .badge-progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); transition: width 0.5s; }
-        .badge-item::after { content: attr(data-tooltip); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: rgba(10, 10, 40, 0.95); color: white; padding: 8px 12px; border-radius: 8px; font-size: 0.8rem; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s; border: 1px solid var(--primary-color); z-index: 100; }
-        .badge-item:hover::after { opacity: 1; visibility: visible; bottom: 120%; }
-
-        .leaderboard-section { text-align: center; margin: 80px 0; padding: 40px; background: rgba(10, 10, 40, 0.6); border-radius: 30px; border: 2px solid rgba(0, 255, 170, 0.3); }
-        .leaderboard-container { max-width: 800px; margin: 40px auto; background: rgba(20, 20, 60, 0.7); border-radius: 20px; overflow: hidden; }
-        .leaderboard-header { display: grid; grid-template-columns: 60px 1fr 100px 100px 100px; padding: 20px; background: rgba(0, 243, 255, 0.1); font-weight: bold; color: var(--primary-color); border-bottom: 2px solid rgba(255, 255, 255, 0.1); }
-        .leaderboard-row { display: grid; grid-template-columns: 60px 1fr 100px 100px 100px; padding: 15px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s; }
-        .leaderboard-row:hover { background: rgba(0, 243, 255, 0.05); }
-        .leaderboard-row.you { background: rgba(0, 255, 170, 0.1); border-left: 4px solid var(--accent-color); }
-        .rank { font-weight: bold; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
-        .rank-1 { color: gold; }
-        .rank-2 { color: silver; }
-        .rank-3 { color: #cd7f32; }
-        .user-info { display: flex; align-items: center; gap: 15px; }
-        .user-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-color); }
-        .user-name { font-weight: bold; }
-        .user-level { color: var(--text-secondary); font-size: 0.9rem; }
-        .score { font-weight: bold; color: var(--accent-color); display: flex; align-items: center; justify-content: center; }
-        .badges-count { display: flex; align-items: center; justify-content: center; gap: 5px; }
-        .leaderboard-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; }
-        .leaderboard-tab { padding: 10px 25px; background: rgba(255, 255, 255, 0.05); border: 2px solid transparent; border-radius: 50px; color: var(--text-secondary); cursor: pointer; transition: all 0.3s; font-weight: bold; }
-        .leaderboard-tab.active { background: rgba(0, 243, 255, 0.2); border-color: var(--primary-color); color: var(--primary-color); }
-        .leaderboard-tab:hover { background: rgba(0, 243, 255, 0.1); }
-        .your-stats-box { background: rgba(0, 243, 255, 0.1); border-radius: 15px; padding: 25px; margin-top: 40px; text-align: left; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .stat-item-leaderboard { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        .stat-item-leaderboard:last-child { border-bottom: none; }
-        .stat-value-leaderboard { font-weight: bold; color: var(--primary-color); }
-
-        @media (max-width: 1200px) { .sidebar { width: 280px; } .main-content { margin-left: 280px; } }
-        @media (max-width: 992px) {
-            .sidebar { width: 240px; } .main-content { margin-left: 240px; padding: 30px; }
-            .avatars-slider { gap: 30px; } .ar-section, .vr-section { flex-direction: column; gap: 50px; }
-            .pricing-cards { flex-direction: column; align-items: center; } .pricing-card { width: 100%; max-width: 400px; }
-            .profile-photo-container { flex-direction: column; } .terms-agreement { grid-template-columns: 1fr; }
+        .gdpr-content {
+            background: rgba(10, 10, 40, 0.95);
+            max-width: 900px;
+            margin: 50px auto;
+            border-radius: 25px;
+            padding: 50px;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 20px 60px rgba(0, 243, 255, 0.3);
+            position: relative;
         }
-        @media (max-width: 768px) {
-            .sidebar { position: fixed; bottom: 0; top: auto; width: 100%; height: 100px; padding: 0; border-right: none; border-top: 1px solid rgba(0, 243, 255, 0.3); background: rgba(5, 5, 20, 0.97); backdrop-filter: blur(20px); z-index: 1000; }
-            .logo, .stats, .faq-section, .theme-selector { display: none; }
-            .nav-links { display: flex; justify-content: space-around; align-items: center; height: 100%; margin: 0; padding: 0 10px; }
-            .nav-links li { margin: 0; flex: 1; }
-            .nav-links a { flex-direction: column; padding: 10px 5px; font-size: 0.8rem; border-left: none; border-top: 3px solid transparent; text-align: center; height: 100%; justify-content: center; }
-            .nav-links a:hover, .nav-links a.active { background: transparent; border-left: none; border-top: 3px solid var(--primary-color); color: var(--primary-color); }
-            .nav-links i { margin: 0 0 5px 0; font-size: 1.2rem; }
-            .main-content { margin-left: 0 !important; padding: 80px 15px 100px !important; width: 100%; }
-            .header h1 { font-size: 2.2rem; } .header p { font-size: 1rem; }
-            .upload-btn { padding: 20px 40px; font-size: 1.4rem; min-width: 250px; }
-            .section-title { font-size: 2rem; } .avatars-slider { flex-direction: column; align-items: center; gap: 30px; }
-            .avatar-item { width: 100%; max-width: 280px; } .steps-container, .cards-grid { grid-template-columns: 1fr; }
-            .avatar-selection { grid-template-columns: 1fr; } .ar-mockup, .vr-visual { width: 100%; max-width: 280px; height: 350px; }
-            .privacy-flow-content, .modal-content { padding: 25px 15px; width: 95%; max-height: 90vh; }
-            .leaderboard-header, .leaderboard-row { grid-template-columns: 40px 1fr 80px 80px 80px; font-size: 0.9rem; padding: 12px 15px; }
-            .your-stats-box { grid-template-columns: 1fr; padding: 20px; } .profile-photo-preview { width: 150px; height: 150px; }
-            .notification { left: 10px !important; right: 10px !important; max-width: calc(100% - 20px) !important; top: 10px !important; padding: 12px 15px !important; font-size: 0.9rem !important; }
-            .mobile-menu-toggle { position: fixed; bottom: 120px; right: 20px; width: 50px; height: 50px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 1001; box-shadow: 0 0 20px var(--primary-color); cursor: pointer; }
+        .gdpr-close {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 2rem;
+            cursor: pointer;
         }
-        @media (max-width: 480px) {
-            .header h1 { font-size: 1.8rem; } .upload-btn { padding: 15px 30px; font-size: 1.2rem; min-width: 200px; }
-            .pricing-card { padding: 20px 15px; } .badges-container { gap: 10px; } .badge-item { width: 80px; padding: 15px; }
-            .badge-icon { font-size: 2rem; } .badge-label { font-size: 0.8rem; }
-            .profile-photo-actions { flex-direction: column; width: 100%; } .profile-photo-btn { width: 100%; justify-content: center; }
-            .expressions-list { justify-content: center; } .modal-content { padding: 20px 15px !important; border-radius: 20px !important; }
-            .modal-title { font-size: 1.8rem !important; }
+        .gdpr-step { margin-bottom: 40px; }
+        .gdpr-step h3 { font-size: 1.8rem; margin-bottom: 20px; color: var(--primary-color); }
+        .gdpr-step p { color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px; }
+        .gdpr-checkbox { display: flex; align-items: center; margin: 20px 0; }
+        .gdpr-checkbox input { margin-right: 15px; transform: scale(1.3); }
+        .gdpr-checkbox label { font-size: 1.1rem; color: var(--text-color); }
+        .gdpr-actions { display: flex; justify-content: space-between; margin-top: 50px; }
+        .btn-gdpr-confirm { background: var(--accent-color); color: black; padding: 18px 40px; border-radius: 15px; font-size: 1.3rem; font-weight: bold; border: none; cursor: pointer; display: flex; align-items: center; gap: 15px; }
+        .btn-gdpr-confirm:hover { background: #00e699; transform: translateY(-3px); }
+
+        /* ========== SETTINGS SECTION STYLES (NEW) ========== */
+        #settings-section {
+            padding: 40px;
+            max-width: 800px;
+            margin: 60px auto 0;
+            background: rgba(10, 10, 40, 0.6);
+            border-radius: 20px;
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 0, 30, 0.6);
         }
-        
-        .gdpr-progress { margin: 20px 0 30px; text-align: center; }
-        .progress-bar { width: 100%; height: 6px; background: rgba(255, 255, 255, 0.1); border-radius: 3px; overflow: hidden; margin-bottom: 10px; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); transition: width 0.5s ease; }
-        .progress-text { color: var(--text-secondary); font-size: 0.9rem; }
-        
-        .ar-instructions, .vr-instructions { background: rgba(0, 243, 255, 0.1); border-radius: 15px; padding: 25px; margin-top: 30px; border-left: 4px solid var(--primary-color); }
-        .ar-instructions h3, .vr-instructions h3 { color: var(--primary-color); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; font-size: 1.3rem; }
-        .ar-instructions ol, .ar-instructions ul, .vr-instructions ol, .vr-instructions ul { padding-left: 25px; margin-bottom: 20px; }
-        .ar-instructions li, .vr-instructions li { margin-bottom: 10px; color: var(--text-secondary); line-height: 1.5; }
-        .ar-instructions strong, .vr-instructions strong { color: var(--text-color); }
-        
-        input, textarea, select { -webkit-appearance: none; -moz-appearance: none; appearance: none; border-radius: 0; }
-        
-        .privacy-flow-content::-webkit-scrollbar, .modal-content::-webkit-scrollbar { width: 8px; }
-        .privacy-flow-content::-webkit-scrollbar-track, .modal-content::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 4px; }
-        .privacy-flow-content::-webkit-scrollbar-thumb, .modal-content::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 4px; }
-        
-        #settingsVoice:checked + .toggle-slider { background-color: rgba(0, 243, 255, 0.5) !important; }
-        #settingsVoice:checked + .toggle-slider:before { background-color: var(--accent-color) !important; }
-        
-        .play-voice-btn:active, .card-btn:active, .subscribe-btn:active, .btn-upload:active, .btn-select:active { transform: scale(0.98) !important; transition: transform 0.1s !important; }
-        * { -webkit-tap-highlight-color: transparent; }
-        .circular-chart text { fill: var(--primary-color) !important; font-weight: bold !important; }
-        .privacy-toggle input[type="checkbox"]:disabled + .toggle-slider { opacity: 0.6; cursor: not-allowed; }
-        .privacy-toggle input[type="checkbox"]:disabled + .toggle-slider:before { opacity: 0.6; }
+        #settings-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        #settings-section > p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+        .settings-block {
+            margin-top: 30px;
+            padding: 30px;
+            background: rgba(5, 5, 20, 0.8);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+        }
+        .settings-block h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--accent-color);
+        }
+        .checkbox-item {
+            margin: 20px 0;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        .checkbox-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-left: 4px solid var(--primary-color);
+        }
+        .checkbox-item input {
+            margin-right: 18px;
+            transform: scale(1.4);
+            cursor: pointer;
+        }
+        .checkbox-item label {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            cursor: pointer;
+            flex-grow: 1;
+        }
+        .checkbox-item label strong {
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+        .privacy-status-box {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 193, 7, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+        }
+        .privacy-status-box p {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+        .privacy-status-label {
+            font-weight: bold;
+            margin-right: 15px;
+            color: var(--text-color);
+        }
+        .privacy-status {
+            color: #ff9800;
+            font-weight: bold;
+        }
+        .btn-edit-gdpr {
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: var(--primary-color);
+            color: black;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        .btn-edit-gdpr:hover {
+            background: #00d4e0;
+            transform: translateY(-3px);
+        }
+        .btn-save-privacy {
+            margin-top: 35px;
+            padding: 18px 40px;
+            background: var(--accent-color);
+            color: black;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+        }
+        .btn-save-privacy:hover {
+            background: #00e699;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 170, 0.4);
+        }
+
+        /* AR Viewer Modal */
+        #ar-viewer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+        }
+        #ar-video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .ar-close-btn {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: rgba(255, 50, 50, 0.9);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .ar-close-btn:hover {
+            background: rgb(255, 80, 80);
+        }
     </style>
 </head>
 <body>
-    <div class="galaxy-bg" id="galaxyBg">
+    <!-- Galaxy Background -->
+    <div class="galaxy-bg">
         <div class="galaxy-img"></div>
     </div>
 
-    <div class="privacy-flow-modal" id="privacyFlowModal">
-        <div class="privacy-flow-content">
-            <button class="close-modal" id="closePrivacyFlow">&times;</button>
-            <div class="gdpr-progress">
-                <div class="progress-bar"><div class="progress-fill" id="gdprProgressFill" style="width: 16.6%;"></div></div>
-                <div class="progress-text" id="gdprProgressText">Step 1 of 6</div>
-            </div>
-            <div class="privacy-header">
-                <h2><i class="fas fa-shield-alt"></i> GDPR Consent Center</h2>
-                <p>We respect your privacy. Please configure your preferences.</p>
-            </div>
-            <div class="privacy-step active" id="privacyStep1">
-                <h3><span class="step-number">1</span> Welcome to Quantum Mirror</h3>
-                <div class="privacy-intro">
-                    <p><strong>Data Controller:</strong> Quantum Mirror s.r.o.</p>
-                    <p><strong>DPO Email:</strong> dpo@quantum-mirror.com</p>
-                    <p>According to GDPR, we need your explicit consent for data processing.</p>
-                    <p><strong>You must complete this before uploading videos.</strong></p>
-                </div>
-                <div class="privacy-buttons"><button class="btn-next" id="nextStep1">Start Configuration →</button></div>
-            </div>
-            <div class="privacy-step" id="privacyStep2">
-                <h3><span class="step-number">2</span> What Data We Collect</h3>
-                <div class="privacy-option"><label class="privacy-toggle"><input type="checkbox" id="dataVideo" checked disabled><span class="toggle-slider"></span><div class="privacy-text"><strong>Video & Audio Data <span class="required">(Required)</span></strong><small>Your uploaded videos for avatar creation (GDPR Art. 6(1)(b))</small></div></label></div>
-                <div class="privacy-option"><label class="privacy-toggle"><input type="checkbox" id="dataBiometric"><span class="toggle-slider"></span><div class="privacy-text"><strong>Biometric Data <span class="required">(Sensitive)</span></strong><small>Facial recognition analysis (GDPR Art. 9(2)(a) - Explicit consent)</small></div></label></div>
-                <div class="privacy-option"><label class="privacy-toggle"><input type="checkbox" id="dataVoice"><span class="toggle-slider"></span><div class="privacy-text"><strong>Voice Recording & Analysis</strong><small>For voice cloning features (GDPR Art. 6(1)(a))</small></div></label></div>
-                <div class="privacy-option"><label class="privacy-toggle"><input type="checkbox" id="dataTechnical"><span class="toggle-slider"></span><div class="privacy-text"><strong>Technical Data</strong><small>Device info, IP address, usage statistics</small></div></label></div>
-                <div class="privacy-buttons"><button class="btn-back" id="backStep2">← Back</button><button class="btn-next" id="nextStep2">Next →</button></div>
-            </div>
-            <div class="privacy-step" id="privacyStep3">
-                <h3><span class="step-number">3</span> Why We Process Data</h3>
-                <div class="privacy-option"><label class="privacy-toggle"><input type="checkbox" id="purposeAvatar" checked><span class="toggle-slider"></span><div class="privacy-text"><strong>Avatar Creation</strong><small>AI generation from your video (Contract)</small></div></label></div>
-                <div class="privacy-option"><label class="privacy-toggle"><input type="checkbox" id="purposeImprove"><span class="toggle-slider"></span><div class="privacy-text"><strong>AI Model Improvement</strong><small>Training our algorithms (Legitimate Interest)</small></div></label></div>
-                <div class="privacy-option"><label class="privacy-toggle"><input type="checkbox" id="purposeResearch"><span class="toggle-slider"></span><div class="privacy-text"><strong>AI Research</strong><small>Anonymized data for research (Consent)</small></div></label></div>
-                <div class="privacy-option"><label class="privacy-toggle"><input type="checkbox" id="purposeMarketing"><span class="toggle-slider"></span><div class="privacy-text"><strong>Personalized Experience</strong><small>Custom avatar recommendations (Consent)</small></div></label></div>
-                <div class="privacy-buttons"><button class="btn-back" id="backStep3">← Back</button><button class="btn-next" id="nextStep3">Next →</button></div>
-            </div>
-            <div class="privacy-step" id="privacyStep4">
-                <h3><span class="step-number">4</span> Third-Party Sharing</h3>
-                <div class="privacy-option"><label class="privacy-toggle"><input type="checkbox" id="thirdCloud" checked disabled><span class="toggle-slider"></span><div class="privacy-text"><strong>Cloud Providers (AWS)</strong><small>Required for video processing (Data Processor)</small></div></label></div>
-                <div class="privacy-option"><label class="privacy-toggle"><input type="checkbox" id="thirdAnalytics"><span class="toggle-slider"></span><div class="privacy-text"><strong>Analytics (Google)</strong><small>Usage statistics and improvements</small></div></label></div>
-                <div class="privacy-option"><label class="privacy-toggle"><input type="checkbox" id="thirdPayment"><span class="toggle-slider"></span><div class="privacy-text"><strong>Payment Processors</strong><small>Stripe/PayPal for paid plans</small></div></label></div>
-                <div class="privacy-option"><label class="privacy-toggle"><input type="checkbox" id="thirdResearch"><span class="toggle-slider"></span><div class="privacy-text"><strong>Research Partners</strong><small>Academic institutions (anonymized only)</small></div></label></div>
-                <div class="privacy-buttons"><button class="btn-back" id="backStep4">← Back</button><button class="btn-next" id="nextStep4">Next →</button></div>
-            </div>
-            <div class="privacy-step" id="privacyStep5">
-                <h3><span class="step-number">5</span> Retention & Your Rights</h3>
-                <div class="retention-section"><h4>Data Retention Period</h4><div class="retention-options"><div class="retention-option"><input type="radio" name="retention" id="retention30" value="30"><label for="retention30"><strong>30 days</strong><small>GDPR minimum</small></label></div><div class="retention-option"><input type="radio" name="retention" id="retention180" value="180" checked><label for="retention180"><strong>6 months</strong><small>Standard practice</small></label></div><div class="retention-option"><input type="radio" name="retention" id="retention365" value="365"><label for="retention365"><strong>1 year</strong><small>Recommended</small></label></div></div></div>
-                <div class="rights-section"><h4>Your GDPR Rights</h4><div class="rights-list"><div class="right-item"><i class="fas fa-download"></i><span>Right to access your data</span></div><div class="right-item"><i class="fas fa-edit"></i><span>Right to correction</span></div><div class="right-item"><i class="fas fa-trash"></i><span>Right to erasure ("right to be forgotten")</span></div><div class="right-item"><i class="fas fa-ban"></i><span>Right to restrict processing</span></div><div class="right-item"><i class="fas fa-file-export"></i><span>Right to data portability</span></div></div></div>
-                <div class="privacy-buttons"><button class="btn-back" id="backStep5">← Back</button><button class="btn-next" id="nextStep5">Next →</button></div>
-            </div>
-            <div class="privacy-step" id="privacyStep6">
-                <h3><span class="step-number">6</span> Review & Confirm</h3>
-                <div class="terms-agreement">
-                    <div class="terms-box"><h4>Legal Agreements <span class="required">(Required)</span></h4><div class="terms-option"><input type="checkbox" id="agreePrivacy"><label for="agreePrivacy">I have read and agree to the <a href="#" id="showPrivacyPolicy">Privacy Policy</a></label></div><div class="terms-option"><input type="checkbox" id="agreeTerms"><label for="agreeTerms">I accept the <a href="#" id="showTerms">Terms of Service</a></label></div><div class="terms-option"><input type="checkbox" id="agreeAge"><label for="agreeAge">I confirm I am 15+ years old (or have parental consent)</label></div></div>
-                    <div class="consent-summary"><h4>Your Selected Preferences:</h4><div id="consentSummary"></div></div>
-                </div>
-                <div class="privacy-buttons-final"><button class="btn-skip" id="skipPrivacy">Configure Later</button><button class="btn-save-final" id="savePrivacyFlow" disabled><i class="fas fa-save"></i> Save & Continue to Upload</button></div>
-            </div>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h1>🔮 Quantum Mirror</h1>
+            <p>See into your parallel self</p>
         </div>
-    </div>
-
-    <div class="upload-modal" id="uploadModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeModal">&times;</button>
-            <div class="modal-step active" id="step1">
-                <h2 class="modal-title"><i class="fas fa-video"></i> Upload Your Video</h2>
-                <p class="modal-instruction">Record a 15-30 second video of your face</p>
-                <div class="video-requirements">
-                    <h4><i class="fas fa-info-circle"></i> Video Requirements:</h4>
-                    <ul class="requirements-list">
-                        <li><i class="fas fa-check-circle"></i><div><strong>15-30 seconds</strong> length<div class="expressions-list"><span class="expression-tag">🎬 Short & clear</span></div></div></li>
-                        <li><i class="fas fa-check-circle"></i><div><strong>Good lighting</strong> on your face<div class="expressions-list"><span class="expression-tag">💡 Face well-lit</span><span class="expression-tag">🌞 No backlight</span></div></div></li>
-                        <li><i class="fas fa-check-circle"></i><div><strong>Show different expressions:</strong><div class="expressions-list"><span class="expression-tag">😊 Smile</span><span class="expression-tag">😐 Neutral</span><span class="expression-tag">😮 Open mouth</span><span class="expression-tag">😉 Wink</span></div></div></li>
-                        <li><i class="fas fa-check-circle"></i><div><strong>Turn head slowly</strong> left to right<div class="expressions-list"><span class="expression-tag">↔️ Full rotation</span></div></div></li>
-                        <li><i class="fas fa-check-circle"></i><div><strong>Say:</strong> "Hello, I'm your quantum self"<div class="expressions-list"><span class="expression-tag">🗣️ Clear audio</span></div></div></li>
-                    </ul>
-                </div>
-                <div class="upload-area" id="uploadArea"><i class="fas fa-video"></i><h3>Drag & Drop Your Video</h3><p>or click to browse (MP4, MOV, WEBM)</p><input type="file" id="videoInput" accept="video/*" style="display: none;"></div>
-                <video id="videoPreview" class="video-preview" controls style="display: none;"></video>
-                <div class="upload-buttons"><button class="btn-back" id="cancelUpload">Cancel</button><button class="btn-upload" id="analyzeVideo" disabled>Analyze with AI</button></div>
-            </div>
-            <div class="modal-step" id="step2">
-                <h2 class="modal-title"><i class="fas fa-brain"></i> AI Analysis</h2>
-                <p class="modal-instruction">Analyzing your facial features and voice...</p>
-                <div style="margin: 40px 0;"><div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 30px;"><div class="analysis-step"><div class="analysis-icon" style="background: rgba(0, 243, 255, 0.2); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;"><i class="fas fa-eye" style="font-size: 1.8rem; color: var(--primary-color);"></i></div><p>Face Detection</p></div><div class="analysis-step"><div class="analysis-icon" style="background: rgba(168, 85, 247, 0.2); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;"><i class="fas fa-wave-square" style="font-size: 1.8rem; color: var(--secondary-color);"></i></div><p>Voice Analysis</p></div><div class="analysis-step"><div class="analysis-icon" style="background: rgba(0, 255, 170, 0.2); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;"><i class="fas fa-atom" style="font-size: 1.8rem; color: var(--accent-color);"></i></div><p>Quantum Match</p></div></div><p>Detecting quantum resonance patterns...</p></div>
-            </div>
-            <div class="modal-step" id="step3">
-                <h2 class="modal-title">Choose Your Quantum Self</h2>
-                <p class="modal-instruction">AI recommends <strong>CyberpunkSelf</strong> (85% match)</p>
-                <div class="avatar-selection">
-                    <div class="avatar-option recommended" data-style="cyberpunk"><div class="recommended-badge">AI RECOMMENDS</div><img src="https://i.postimg.cc/KRVTvk7m/kyborgpunk.png" class="avatar-option-img" alt="Cyberpunk Avatar" loading="lazy" width="100" height="100"><div class="match-percentage high">85% match</div><h3 class="avatar-name">CyberpunkSelf</h3><p>Neon implants, reflective eyes</p></div>
-                    <div class="avatar-option" data-style="nature"><img src="https://i.postimg.cc/Xph57GK4/chlapazena.png" class="avatar-option-img" alt="Nature Avatar" loading="lazy" width="100" height="100"><div class="match-percentage medium">72% match</div><h3 class="avatar-name">Nature Spirit</h3><p>Vines & leaves, forest aura</p></div>
-                    <div class="avatar-option" data-style="renaissance"><img src="https://i.postimg.cc/F7qSsdbm/Renesance.png" class="avatar-option-img" alt="Renaissance Avatar" loading="lazy" width="100" height="100"><div class="match-percentage medium">68% match</div><h3 class="avatar-name">RenaissancePainter</h3><p>Classical studio, natural light</p></div>
-                    <div class="avatar-option" data-style="energy"><img src="https://i.postimg.cc/PPcDrpbG/energyhuman.png" class="avatar-option-img" alt="Energy Avatar" loading="lazy" width="100" height="100"><div class="match-percentage low">55% match</div><h3 class="avatar-name">EnergyForm</h3><p>Transparent, crystalline light</p></div>
-                </div>
-                <div class="upload-buttons"><button class="btn-back" id="backToUpload">Back</button><button class="btn-select" id="selectAvatar">Select & Create Avatar</button></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="sidebar">
-        <div class="logo"><h1>Quantum Mirror</h1><p>Multiverse Explorer</p></div>
+        
         <ul class="nav-links">
-            <li><a href="#" class="active" data-page="dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
-            <li><a href="#" data-page="myself"><i class="fas fa-user-astronaut"></i> My Self</a></li>
-            <li><a href="#" data-page="ar"><i class="fas fa-vr-cardboard"></i> AR Viewer</a></li>
-            <li><a href="#" data-page="vr"><i class="fas fa-globe"></i> VR Portal</a></li>
-            <li><a href="#" data-page="upgrade"><i class="fas fa-gem"></i> Upgrade Plan</a></li>
-            <li><a href="#" data-page="settings"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="#" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#"><i class="fas fa-user-astronaut"></i> My Avatars</a></li>
+            <li><a href="#"><i class="fas fa-vr-cardboard"></i> AR Viewer</a></li>
+            <li><a href="#"><i class="fas fa-crown"></i> Leaderboard</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
         </ul>
+        
         <div class="stats">
             <h3><i class="fas fa-chart-line"></i> Your Stats</h3>
-            <div class="circular-graph"><svg class="circular-chart" viewBox="0 0 36 36"><path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" /><path class="circle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" /><text x="18" y="20.5" text-anchor="middle" fill="var(--primary-color)" font-size="6" font-weight="bold">0%</text></svg></div>
-            <div class="graph-stats"><div class="graph-stat"><div class="graph-value" id="avatarCount">0</div><div class="graph-label">Created Selves</div></div><div class="graph-stat"><div class="graph-value" id="sessionHours">0</div><div class="graph-label">Hours</div></div></div>
-            <div class="stat-item"><span><i class="fas fa-star"></i> Favorites</span><strong id="favoriteCount">0</strong></div>
-            <div class="stat-item"><span><i class="fas fa-calendar"></i> This Week</span><strong id="weeklyAvatars">0</strong></div>
-        </div>
-        <div class="faq-section">
-            <h4><i class="fas fa-question-circle"></i> FAQ & Help</h4>
-            <div class="faq-accordion">
-                <div class="faq-item"><div class="faq-question"><span>✅ Age 15+ Verification</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Quantum Mirror requires users to be <strong>15 years or older</strong>.</p><p>• By creating an avatar, you confirm you meet age requirements</p><p>• Users under 15 need parental consent</p><p>• Age verification may be requested for premium features</p></div></div>
-                <div class="faq-item"><div class="faq-question"><span>🎥 How does it work?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>1. <strong>Upload video</strong> (15-30 seconds of your face)</p><p>2. <strong>AI analyzes</strong> facial features & voice</p><p>3. <strong>Choose from 4</strong> parallel universe styles</p><p>4. <strong>Meet your quantum self</strong> in AR/VR</p></div></div>
-                <div class="faq-item"><div class="faq-question"><span>📹 Video requirements?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p><strong>For best results:</strong></p><p>• 15-30 second video</p><p>• Good lighting on face</p><p>• Show different expressions</p><p>• Turn head left to right</p><p>• Say: "Hello, I'm your quantum self"</p></div></div>
-                <div class="faq-item"><div class="faq-question"><span>🔒 Is my data safe?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p><strong>GDPR compliant:</strong></p><p>• Videos processed securely</p><p>• No data selling ever</p><p>• Delete avatars anytime</p><p>• End-to-end encryption</p></div></div>
-                <div class="faq-item"><div class="faq-question"><span>🗣️ Voice cloning?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p><strong>Free plan:</strong> Basic robotic voice</p><p><strong>Creator plan:</strong> Improved AI voice</p><p><strong>Premium plan:</strong> Realistic voice cloning</p><p>• Extracted from your video</p><p>• GDPR consent required</p></div></div>
-                <div class="faq-item"><div class="faq-question"><span>📞 Need help?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p><strong>Email:</strong> support@quantum-mirror.com</p><p><strong>Discord:</strong> community.quantum-mirror.com</p><p><strong>FAQ:</strong> quantum-mirror.com/help</p><p><strong>Response time:</strong> 24-48 hours</p></div></div>
+            <div class="stat-item">
+                <span><i class="fas fa-globe"></i> Global Rank</span>
+                <strong>#--</strong>
+            </div>
+            <div class="stat-item">
+                <span><i class="fas fa-star"></i> Your Score</span>
+                <strong>0</strong>
+            </div>
+            <div class="stat-item">
+                <span><i class="fas fa-medal"></i> Badges</span>
+                <strong>0/12</strong>
+            </div>
+            <div class="stat-item">
+                <span><i class="fas fa-level-up-alt"></i> Level</span>
+                <strong>1</strong>
             </div>
         </div>
+        
+        <div class="circular-graph">
+            <svg class="circular-chart" viewBox="0 0 36 36">
+                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none"/>
+                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+            </svg>
+            <div class="graph-stats">
+                <div class="graph-stat">
+                    <div class="graph-value">0h</div>
+                    <div class="graph-label">Total Time</div>
+                </div>
+                <div class="graph-stat">
+                    <div class="graph-value">0</div>
+                    <div class="graph-label">Avatars</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-section">
+            <h4><i class="fas fa-question-circle"></i> Quick FAQ</h4>
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long should my video be?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Record <strong>15-30 seconds</strong> in good lighting.</p>
+                        <p>AI analyzes facial features & voice in seconds.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What video formats are supported?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>MP4, WebM, and OGG</strong> formats work best.</p>
+                        <p>Maximum file size is <strong>100MB</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div class="theme-selector">
             <h4><i class="fas fa-palette"></i> Theme</h4>
             <div class="theme-options">
-                <div class="theme-option active" data-theme="default">🌌 Default</div>
-                <div class="theme-option" data-theme="cyber">🟣 Cyber</div>
-                <div class="theme-option" data-theme="nature">🌿 Nature</div>
-                <div class="theme-option" data-theme="sunset">🌅 Sunset</div>
-                <div class="theme-option" data-theme="matrix">📗 Matrix</div>
-                <div class="theme-option" data-theme="crimson">🔴 Crimson</div>
-                <div class="theme-option" data-theme="pearl">⚪ Pearl</div>
+                <div class="theme-option active" data-theme="default">Quantum</div>
+                <div class="theme-option" data-theme="cyber">Cyberpunk</div>
+                <div class="theme-option" data-theme="nature">Nature</div>
+                <div class="theme-option" data-theme="sunset">Sunset</div>
+                <div class="theme-option" data-theme="matrix">Matrix</div>
+                <div class="theme-option" data-theme="pearl">Pearl</div>
             </div>
         </div>
-        <div class="mobile-menu-toggle" style="display: none;"><i class="fas fa-ellipsis-h"></i></div>
-    </div>
+    </aside>
 
-    <div class="main-content">
-        <div class="page active" id="dashboard-page">
-            <header class="header">
-                <h1>Quantum Mirror</h1>
-                <p>See into your parallel self</p>
-                <div class="upload-container">
-                    <button class="upload-btn" id="createVideoBtn"><i class="fas fa-video"></i> Upload Your Video</button>
-                    <div class="broken-glass" id="brokenGlass"></div>
-                </div>
-                <p style="margin-top: 20px; font-size: 1.2rem; color: var(--text-secondary);" id="statusText">No quantum self created yet</p>
-            </header>
-            <section class="avatars-section">
-                <h2 class="section-title">Your Quantum Self</h2>
-                <div class="center-text"><p style="font-size: 1.4rem; color: var(--text-secondary); margin-bottom: 40px;">Create your own quantum version or explore these examples:</p></div>
-                <div class="avatars-slider">
-                    <div class="avatar-item"><div class="avatar-frame"><img src="https://i.postimg.cc/KRVTvk7m/kyborgpunk.png" class="avatar-image" alt="Cyberpunk Avatar" loading="lazy" width="200" height="200"></div><h3 class="avatar-name">CyberpunkSelf</h3><p class="avatar-label">Neon implants, reflective eyes, future city</p><button class="play-voice-btn" data-style="cyberpunk"><i class="fas fa-play-circle"></i> Play Voice</button></div>
-                    <div class="avatar-item"><div class="avatar-frame"><img src="https://i.postimg.cc/Xph57GK4/chlapazena.png" class="avatar-image" alt="Nature Avatar" loading="lazy" width="200" height="200"></div><h3 class="avatar-name">Nature Spirit</h3><p class="avatar-label">Vines & leaves, glowing forest aura</p><button class="play-voice-btn" data-style="nature"><i class="fas fa-play-circle"></i> Play Voice</button></div>
-                    <div class="avatar-item"><div class="avatar-frame"><img src="https://i.postimg.cc/F7qSsdbm/Renesance.png" class="avatar-image" alt="Renaissance Avatar" loading="lazy" width="200" height="200"></div><h3 class="avatar-name">RenaissancePainter</h3><p class="avatar-label">Classical studio, brush in hand, natural light</p><button class="play-voice-btn" data-style="renaissance"><i class="fas fa-play-circle"></i> Play Voice</button></div>
-                    <div class="avatar-item"><div class="avatar-frame"><img src="https://i.postimg.cc/PPcDrpbG/energyhuman.png" class="avatar-image" alt="Energy Avatar" loading="lazy" width="200" height="200"></div><h3 class="avatar-name">EnergyForm</h3><p class="avatar-label">Transparent, crystalline, pulsating light</p><button class="play-voice-btn" data-style="energy"><i class="fas fa-play-circle"></i> Play Voice</button></div>
-                </div>
-                <div id="userAvatarsContainer" style="margin-top: 80px; display: none;"><h3 style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 40px; text-align: center;">Your Created Selves</h3><div class="avatars-slider" id="userAvatarsSlider"></div></div>
-            </section>
-            <section class="achievements-section">
-                <h2 class="section-title">Your Achievements</h2>
-                <div class="center-text"><p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 30px;">Unlock badges by exploring Quantum Mirror. <strong id="unlockedCount">0/12</strong> unlocked</p></div>
-                <div class="badges-container">
-                    <div class="badge-item" id="badgeFirstStep" data-tooltip="Create your first quantum self"><div class="badge-icon">👶</div><span class="badge-label">First Step</span><div class="badge-progress"><div class="badge-progress-fill" style="width: 0%"></div></div></div>
-                    <div class="badge-item" id="badgeUploader" data-tooltip="Upload 5 different videos"><div class="badge-icon">📹</div><span class="badge-label">Video Master</span><div class="badge-progress"><div class="badge-progress-fill" style="width: 0%"></div></div></div>
-                    <div class="badge-item" id="badgeMultiSelf" data-tooltip="Create 3 different avatars"><div class="badge-icon">👥</div><span class="badge-label">Multi-Self</span><div class="badge-progress"><div class="badge-progress-fill" style="width: 0%"></div></div></div>
-                    <div class="badge-item" id="badgeARExplorer" data-tooltip="Use AR viewer 10 times"><div class="badge-icon">📱</div><span class="badge-label">AR Explorer</span><div class="badge-progress"><div class="badge-progress-fill" style="width: 0%"></div></div></div>
-                    <div class="badge-item" id="badgeCollector" data-tooltip="Try all 4 avatar styles"><div class="badge-icon">💎</div><span class="badge-label">Style Collector</span><div class="badge-progress"><div class="badge-progress-fill" style="width: 0%"></div></div></div>
-                    <div class="badge-item" id="badgeSocial" data-tooltip="Share 3 avatars with friends"><div class="badge-icon">🤝</div><span class="badge-label">Social Butterfly</span><div class="badge-progress"><div class="badge-progress-fill" style="width: 0%"></div></div></div>
-                    <div class="badge-item" id="badgeCreator" data-tooltip="Upgrade to Creator plan"><div class="badge-icon">🎨</div><span class="badge-label">Quantum Creator</span><div class="badge-progress"><div class="badge-progress-fill" style="width: 0%"></div></div></div>
-                    <div class="badge-item" id="badgeTimeTraveler" data-tooltip="Spend 5 hours total in app"><div class="badge-icon">⏳</div><span class="badge-label">Time Traveler</span><div class="badge-progress"><div class="badge-progress-fill" style="width: 0%"></div></div></div>
-                    <div class="badge-item" id="badgePerfectionist" data-tooltip="Get 90%+ match on all styles"><div class="badge-icon">⭐</div><span class="badge-label">Perfectionist</span><div class="badge-progress"><div class="badge-progress-fill" style="width: 0%"></div></div></div>
-                    <div class="badge-item" id="badgeLegend" data-tooltip="Unlock all other badges"><div class="badge-icon">👑</div><span class="badge-label">Quantum Legend</span><div class="badge-progress"><div class="badge-progress-fill" style="width: 0%"></div></div></div>
-                    <div class="badge-item" id="badgePioneer" data-tooltip="Join during beta testing"><div class="badge-icon">🚀</div><span class="badge-label">Beta Pioneer</span><div class="badge-progress"><div class="badge-progress-fill" style="width: 0%"></div></div></div>
-                    <div class="badge-item" id="badgeContributor" data-tooltip="Submit feedback that gets implemented"><div class="badge-icon">💡</div><span class="badge-label">Idea Contributor</span><div class="badge-progress"><div class="badge-progress-fill" style="width: 0%"></div></div></div>
-                </div>
-                <div style="margin-top: 40px; text-align: center;"><button class="card-btn" onclick="checkAllAchievements()"><i class="fas fa-sync-alt"></i> Check Achievements</button><button class="card-btn" onclick="showLeaderboard()" style="margin-left: 15px;"><i class="fas fa-trophy"></i> View Leaderboard</button></div>
-            </section>
-            <section class="leaderboard-section" id="leaderboardSection" style="display: none;">
-                <h2 class="section-title">Quantum Leaderboard</h2>
-                <div class="center-text"><p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 30px;">Compare your progress with other explorers worldwide</p></div>
-                <div class="leaderboard-tabs"><button class="leaderboard-tab active" data-tab="global">🌍 Global</button><button class="leaderboard-tab" data-tab="friends">👥 Friends</button><button class="leaderboard-tab" data-tab="weekly">📅 This Week</button><button class="leaderboard-tab" data-tab="creators">🎨 Top Creators</button></div>
-                <div class="leaderboard-container">
-                    <div class="leaderboard-header"><div>Rank</div><div>Explorer</div><div>Score</div><div>Badges</div><div>Level</div></div>
-                    <div id="leaderboardContent"></div>
-                </div>
-                <div class="your-stats-box">
-                    <h4 style="color: var(--primary-color); margin-bottom: 15px; grid-column: 1 / -1;"><i class="fas fa-user-circle"></i> Your Stats</h4>
-                    <div class="stat-item-leaderboard"><span>Global Rank</span><span class="stat-value-leaderboard" id="yourRank">#--</span></div>
-                    <div class="stat-item-leaderboard"><span>Your Score</span><span class="stat-value-leaderboard" id="yourScore">0</span></div>
-                    <div class="stat-item-leaderboard"><span>Badges</span><span class="stat-value-leaderboard" id="yourBadges">0/12</span></div>
-                    <div class="stat-item-leaderboard"><span>Level</span><span class="stat-value-leaderboard" id="yourLevel">1</span></div>
-                    <div class="stat-item-leaderboard"><span>Total Time</span><span class="stat-value-leaderboard" id="yourTime">0h</span></div>
-                    <div class="stat-item-leaderboard"><span>Avatars Created</span><span class="stat-value-leaderboard" id="yourAvatars">0</span></div>
-                </div>
-                <div style="margin-top: 30px; text-align: center;"><button class="card-btn" onclick="hideLeaderboard()"><i class="fas fa-arrow-left"></i> Back to Dashboard</button><button class="card-btn" onclick="shareYourScore()" style="margin-left: 15px;"><i class="fas fa-share-alt"></i> Share Your Score</button></div>
-            </section>
-            <section class="how-it-works-section">
-                <h2 class="section-title">How It Works</h2>
-                <div class="steps-container">
-                    <div class="step"><div class="step-icon">📹</div><h3>1. Upload Your Video</h3><p>Record 15-30 seconds. AI analyzes facial features & voice in seconds.</p></div>
-                    <div class="step"><div class="step-icon">🤖</div><h3>2. AI Creates Your Avatar</h3><p>Choose from 4 parallel universe versions of yourself.</p></div>
-                    <div class="step"><div class="step-icon">📱</div><h3>3. Connect AR Camera</h3><p>Open your phone's camera to see your quantum self in your room.</p></div>
-                    <div class="step"><div class="step-icon">🗣️</div><h3>4. Talk & Explore</h3><p>Have conversations, explore VR realities with friends.</p></div>
-                </div>
-            </section>
-            <section class="ar-section">
-                <div class="ar-text"><h2>Meet yourself in AR.<br>No app needed.</h2><p>Open your camera and see your quantum self standing right beside you in your own room.</p></div>
-                <div class="ar-mockup"><div class="iphone-notch"></div><div class="ar-screen"><img src="https://i.postimg.cc/tJYHFsWS/meetyourself.png" class="tablet-image" alt="AR preview" loading="lazy"></div></div>
-            </section>
-            <section class="vr-section">
-                <div class="vr-visual"><div class="vr-environment"><div class="vr-crystals"><div class="crystal crystal1"></div><div class="crystal crystal2"></div><div class="crystal crystal3"></div></div><div class="vr-platform"><div class="vr-avatar cyberpunk"></div><div class="vr-avatar nature"></div><div class="vr-avatar energy"></div></div></div></div>
-                <div class="vr-text"><h2>Enter shared VR realities with friends.</h2><p>Join friends in a persistent multiverse lounge. Each of you appears as your chosen quantum self.</p></div>
-            </section>
-            <footer><div class="center-text"><p>Quantum Mirror © 2025 – Step into your multiverse.</p><p>Not a real product (yet). Made with ❤️ for dreamers and parallel‑universe explorers.</p></div></footer>
-        </div>
-        <div class="page" id="myself-page">
-            <div class="page-header"><h2><i class="fas fa-user-astronaut"></i> My Self</h2><p>Manage your quantum avatars</p></div>
-            <div class="page-content"><div class="cards-grid" id="myselfCards"></div></div>
-        </div>
-        <div class="page" id="ar-page">
-            <div class="page-header"><h2><i class="fas fa-vr-cardboard"></i> AR Viewer</h2><p>Experience your avatars in Augmented Reality</p></div>
-            <div class="page-content">
-                <div class="cards-grid">
-                    <div class="feature-card"><i class="fas fa-camera"></i><h3>Start AR Camera</h3><p>Open your device's camera to see avatars in your environment</p><button class="card-btn" onclick="startARCamera()">Start AR</button></div>
-                    <div class="feature-card"><i class="fas fa-expand"></i><h3>Full Screen Mode</h3><p>Immersive AR experience without distractions</p><button class="card-btn" onclick="fullscreenAR()">Full Screen</button></div>
-                    <div class="feature-card"><i class="fas fa-photo-video"></i><h3>Record Session</h3><p>Capture videos and photos of your AR experience</p><button class="card-btn" onclick="recordAR()">Record</button></div>
-                </div>
-                <div class="ar-instructions">
-                    <h3><i class="fas fa-info-circle"></i> How to Use AR Viewer</h3>
-                    <ol>
-                        <li><strong>Click "Start AR" button</strong> - This will request camera access</li>
-                        <li><strong>Allow camera access</strong> when your browser asks for permission</li>
-                        <li><strong>Point your camera</strong> at a flat surface (floor or table)</li>
-                        <li><strong>Tap on the screen</strong> to place your quantum avatar</li>
-                        <li><strong>Use gestures:</strong><ul><li>📏 <strong>Pinch</strong> to zoom in/out</li><li>🔄 <strong>Drag with one finger</strong> to rotate avatar</li><li>👆 <strong>Drag with two fingers</strong> to move avatar</li></ul></li>
-                    </ol>
-                    <h3><i class="fas fa-mobile-alt"></i> Mobile Tips:</h3><ul><li>Hold phone horizontally for best experience</li><li>Good lighting improves tracking</li><li>Move slowly for stable AR</li><li>Works best on Chrome or Safari</li></ul>
-                    <h3><i class="fas fa-exclamation-triangle"></i> Troubleshooting:</h3><ul><li>If camera doesn't start, check browser permissions</li><li>AR requires HTTPS connection</li><li>Some browsers may need WebXR permission enabled</li></ul>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>See into your parallel self</h1>
+            <p>Upload a short video and AI will create quantum versions of you. Explore alternate realities, meet yourself in AR, and join friends in shared VR.</p>
+            <div class="hero-actions">
+                <button class="btn btn-primary" onclick="document.getElementById('gdpr-modal').style.display='block'">
+                    <i class="fas fa-play-circle"></i> Start Creating
+                </button>
+                <a href="#" class="btn btn-secondary">
+                    <i class="fas fa-play"></i> See Examples
+                </a>
+            </div>
+        </section>
+
+        <!-- Avatar Creation Section -->
+        <section class="avatar-creation-section disabled" id="avatar-creation">
+            <h2 class="section-title"><i class="fas fa-upload"></i> Create Your Quantum Self</h2>
+            <div class="video-upload-container">
+                <label class="video-upload-label">📹 Upload your video (15-30 seconds recommended)</label>
+                <input type="file" id="video-upload" class="video-upload-input" accept="video/*">
+                <label for="video-upload" class="video-upload-button">
+                    <i class="fas fa-video"></i> Choose Video File
+                </label>
+                <div class="video-preview" id="video-preview" style="display: none;">
+                    <video id="preview-player" controls></video>
                 </div>
             </div>
-        </div>
-        <div class="page" id="vr-page">
-            <div class="page-header"><h2><i class="fas fa-globe"></i> VR Portal</h2><p>Enter virtual reality with friends</p></div>
-            <div class="page-content">
-                <div class="cards-grid">
-                    <div class="feature-card"><i class="fas fa-plug"></i><h3>Connect VR Headset</h3><p>Connect your Oculus, Vive, or other VR devices</p><button class="card-btn" onclick="connectVR()">Connect</button></div>
-                    <div class="feature-card"><i class="fas fa-users"></i><h3>Multiplayer Mode</h3><p>Join friends in shared VR realities</p><button class="card-btn" onclick="multiplayerVR()">Join Friends</button></div>
-                    <div class="feature-card"><i class="fas fa-gamepad"></i><h3>VR Controls</h3><p>Configure your VR controller settings</p><button class="card-btn" onclick="vrControls()">Controls</button></div>
-                </div>
-                <div class="vr-instructions">
-                    <h3><i class="fas fa-info-circle"></i> VR Setup Guide</h3>
-                    <ol>
-                        <li><strong>Connect your VR headset</strong> to your computer</li>
-                        <li><strong>Enable WebXR</strong> in your browser settings</li>
-                        <li><strong>Click "Connect" button</strong> to initialize VR</li>
-                        <li><strong>Put on your headset</strong> when prompted</li>
-                        <li><strong>Use controllers</strong> to navigate and interact</li>
-                    </ol>
-                    <h3><i class="fas fa-headset"></i> Supported Devices:</h3><ul><li>Oculus Quest 2/3/Pro (via Oculus Browser)</li><li>HTC Vive (via Chrome with WebXR)</li><li>Valve Index (via SteamVR + Chrome)</li><li>Windows Mixed Reality</li></ul>
-                    <h3><i class="fas fa-exclamation-triangle"></i> Requirements:</h3><ul><li>Modern browser with WebXR support</li><li>VR headset connected and powered on</li><li>Stable internet connection</li><li>Minimum 4GB RAM on device</li></ul>
-                </div>
+            <div class="avatar-actions">
+                <button class="btn-create" onclick="uploadVideo()">
+                    <i class="fas fa-robot"></i> Save and Create Avatar
+                </button>
             </div>
-        </div>
-        <div class="page" id="upgrade-page">
-            <div class="page-header"><h2><i class="fas fa-gem"></i> Upgrade Plan</h2><p>Choose your quantum reality tier</p></div>
-            <div class="page-content">
-                <div class="pricing-cards">
-                    <div class="pricing-card"><div class="card-header"><h3>🆓 Free Forever</h3><div class="price">€0 <span>/ forever</span></div></div><ul class="pricing-features"><li><i class="fas fa-check"></i> 1 avatar (AI picks)</li><li><i class="fas fa-check"></i> 10 message demo</li><li><i class="fas fa-check"></i> Preview AR</li><li><i class="fas fa-times"></i> No voice cloning</li><li><i class="fas fa-times"></i> No memory</li><li><i class="fas fa-times"></i> Auto-delete after 24h</li></ul><button class="subscribe-btn">Get Started</button></div>
-                    <div class="pricing-card popular"><div class="popular-badge">BEST VALUE</div><div class="card-header"><h3>🎨 Creator</h3><div class="price">€29.99 <span>• one-time</span></div></div><ul class="pricing-features"><li><i class="fas fa-check"></i> Up to 4 avatars</li><li><i class="fas fa-check"></i> Basic voice cloning</li><li><i class="fas fa-check"></i> Unlimited memory (1 avatar)</li><li><i class="fas fa-check"></i> Priority AI</li><li><i class="fas fa-check"></i> Advanced AR</li><li><i class="fas fa-check"></i> Export 3D model</li></ul><button class="subscribe-btn">Become Creator</button></div>
-                    <div class="pricing-card"><div class="card-header"><h3>🌟 Multiverse</h3><div class="price">€39.99 <span>• one-time</span></div></div><ul class="pricing-features"><li><i class="fas fa-check"></i> Unlimited avatars</li><li><i class="fas fa-check"></i> Multiplayer AR (1 friend)</li><li><i class="fas fa-check"></i> Shared memories</li><li><i class="fas fa-check"></i> Custom avatars</li><li><i class="fas fa-check"></i> API access</li><li><i class="fas fa-times"></i> No VR (coming 2026)</li></ul><button class="subscribe-btn">Join Multiverse</button></div>
-                    <div class="pricing-card"><div class="card-header"><h3>🕶️ VR Realm</h3><div class="coming-soon">COMING 2026</div><div class="price">€49.99 <span>• one-time</span></div></div><ul class="pricing-features"><li><i class="fas fa-check"></i> Everything from Multiverse +</li><li><i class="fas fa-check"></i> VR Access (2026)</li><li><i class="fas fa-check"></i> Reality merge</li><li><i class="fas fa-check"></i> Premium voice cloning</li><li><i class="fas fa-check"></i> Early access to features</li><li><i class="fas fa-check"></i> Priority support</li></ul><button class="subscribe-btn waitlist">Join Waitlist</button></div>
-                </div>
-                <div class="pricing-note"><i class="fas fa-gem"></i><p><strong>All plans include:</strong> Privacy-first design • GDPR compliance • No data selling</p></div>
+        </section>
+
+        <!-- Example Avatars -->
+        <section class="examples-section">
+            <h2 class="section-title"><i class="fas fa-images"></i> Example Quantum Selves</h2>
+            <div class="examples-grid" id="example-avatars">
+                <!-- Example avatars will be loaded by JavaScript -->
             </div>
-        </div>
-        <div class="page" id="settings-page">
-            <div class="page-header"><h2><i class="fas fa-cog"></i> Settings</h2><p>Configure your Quantum Mirror experience</p></div>
-            <div class="page-content">
-                <div class="settings-container">
-                    <div class="profile-photo-section">
-                        <h3><i class="fas fa-camera"></i> Profile Photo</h3>
-                        <div class="profile-photo-container">
-                            <div class="profile-photo-preview" id="profilePhotoPreview"><i class="fas fa-user-circle"></i></div>
-                            <div class="profile-photo-actions">
-                                <button class="profile-photo-btn upload" id="uploadProfilePhotoBtn"><i class="fas fa-upload"></i> Upload Photo</button>
-                                <button class="profile-photo-btn" id="editProfilePhotoBtn" style="display: none;"><i class="fas fa-edit"></i> Edit Photo</button>
-                                <button class="profile-photo-btn delete" id="deleteProfilePhotoBtn" style="display: none;"><i class="fas fa-trash"></i> Delete Photo</button>
-                            </div>
-                            <input type="file" id="profilePhotoInput" class="profile-photo-input" accept="image/*">
-                            <div class="profile-photo-crop-container" id="cropContainer"><canvas id="profilePhotoCanvas" width="400" height="400"></canvas><div class="crop-controls"><button class="crop-btn" id="cancelCropBtn">Cancel</button><button class="crop-btn apply" id="applyCropBtn">Apply Crop</button></div></div>
-                            <div class="profile-photo-info"><p><i class="fas fa-info-circle"></i> Upload a clear photo of your face. Max size: 5MB. Supported: JPG, PNG, WEBP</p></div>
-                        </div>
-                    </div>
-                    <div class="settings-section">
-                        <h3><i class="fas fa-user"></i> Profile Settings</h3>
-                        <div class="settings-group"><label>Your Name</label><input type="text" class="settings-input" id="userName" placeholder="Enter your name"></div>
-                        <div class="settings-group"><label>Email Address</label><input type="email" class="settings-input" id="userEmail" placeholder="your.email@example.com"></div>
-                        <div class="settings-group"><label>Age Verification</label><select class="settings-input" id="userAge"><option value="">Select age range</option><option value="15-17">15-17 years</option><option value="18-24">18-24 years</option><option value="25-34">25-34 years</option><option value="35-44">35-44 years</option><option value="45+">45+ years</option></select><small style="color: var(--text-secondary); margin-top: 5px; display: block;">Required for premium features. Users under 15 need parental consent.</small></div>
-                        <button class="btn-save" onclick="saveProfile()">Save Profile</button>
-                    </div>
-                    <div class="settings-section">
-                        <h3><i class="fas fa-microphone-alt"></i> Voice Settings</h3>
-                        <div class="settings-row"><div><strong>Voice Cloning</strong><small>Avatars can speak with AI voice</small></div>
-    <div style="color: var(--accent-color); font-weight: bold;">✓ Always Available</div>
-</div>
-                        <div class="settings-group"><label>Voice Style</label><select class="settings-input" id="voiceStyle"><option value="default">Default (Robotic)</option><option value="natural">Natural</option><option value="echo">Echo Effect</option><option value="cyberpunk">Cyberpunk</option><option value="mystical">Mystical</option></select></div>
-                        <div class="settings-group"><label>Test Voice</label><button class="card-btn" onclick="testVoice()" style="width: 100%;"><i class="fas fa-play-circle"></i> Play Test Message</button><small style="color: var(--text-secondary); margin-top: 5px; display: block;">Click once to play. Click again to stop.</small></div>
-                    </div>
-                    <div class="settings-section">
-                        <h3><i class="fas fa-shield-alt"></i> Privacy Settings</h3>
-                        <div class="settings-row"><div><strong>AI Learning</strong><small>Learn from our conversations</small></div><label class="toggle-switch"><input type="<div><strong>Voice Cloning
+        </section>
 
+        <!-- User Created Avatars -->
+        <section class="created-avatars-section">
+            <h2 class="section-title"><i class="fas fa-user-friends"></i> Your Created Selves</h2>
+            <div class="created-avatars-container" id="created-avatars-container">
+                <!-- User avatars will be loaded here -->
+            </div>
+        </section>
 
+        <!-- ========== SETTINGS SECTION (NEW - ADDED HERE) ========== -->
+        <section id="settings-section">
+            <h2><i class="fas fa-cog"></i> Settings</h2>
+            <p>Configure your Quantum Mirror experience</p>
 
+            <!-- Privacy Settings Block -->
+            <div class="settings-block">
+                <h3><i class="fas fa-user-shield"></i> Privacy Settings</h3>
+                
+                <!-- AI Learning Checkbox -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="privacy-ai-learning">
+                    <label for="privacy-ai-learning">
+                        <strong>AI Learning</strong> – Learn from our conversations
+                    </label>
+                </div>
+                <!-- Public Gallery Checkbox -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="privacy-gallery">
+                    <label for="privacy-gallery">
+                        <strong>Public Gallery</strong> – Show my avatar to others
+                    </label>
+                </div>
+                <!-- Research Data Checkbox -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="privacy-research">
+                    <label for="privacy-research">
+                        <strong>Research Data</strong> – Share anonymized data
+                    </label>
+                </div>
+                
+                <!-- GDPR Status Display -->
+                <div class="privacy-status-box">
+                    <p>
+                        <span class="privacy-status-label">GDPR Status:</span>
+                        <span class="privacy-status">Not Configured</span>
+                    </p>
+                    <button class="btn-edit-gdpr" onclick="document.getElementById('gdpr-modal').style.display='block'">
+                        <i class="fas fa-edit"></i> Edit GDPR Consent
+                    </button>
+                </div>
 
-checkbox" id="settingsTraining"><span class="toggle-slider"></span></label></div>
-                        <div class="settings-row"><div><strong>Public Gallery</strong><small>Show my avatar to others</small></div><label class="toggle-switch"><input type="checkbox" id="settingsGallery"><span class="toggle-slider"></span></label></div>
-                        <div class="settings-row"><div><strong>Research Data</strong><small>Share anonymized data</small></div><label class="toggle-switch"><input type="checkbox" id="settingsResearch"><span class="toggle-slider"></span></label></div>
-                        <div class="settings-group"><label>Video Retention</label><select class="settings-input" id="settingsRetention"><option value="30">30 days</option><option value="180">6 months</option><option value="365">1 year</option><option value="never">Until deleted</option></select></div>
-                        <button class="edit-gdpr-btn" onclick="editGDPRConsent()"><i class="fas fa-edit"></i> Edit GDPR Consent</button>
-                        <div class="settings-group" style="margin-top: 20px;"><label>GDPR Status</label><div id="gdprStatus" style="padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; margin-top: 5px;"></div></div>
-                        <button class="btn-save" onclick="savePrivacySettings()">Save Privacy Settings</button>
-                    </div>
+                <!-- Save Button -->
+                <button class="btn-save-privacy" onclick="savePrivacySettings()">
+                    <i class="fas fa-save"></i> Save Privacy Settings
+                </button>
+            </div>
+        </section>
+        <!-- ========== END SETTINGS SECTION ========== -->
+
+    </main>
+
+    <!-- GDPR Modal -->
+    <div id="gdpr-modal" class="gdpr-modal">
+        <div class="gdpr-content">
+            <button class="gdpr-close" onclick="document.getElementById('gdpr-modal').style.display='none'">×</button>
+            
+            <div class="gdpr-step">
+                <h3>Step 1 of 6: Welcome to Quantum Mirror</h3>
+                <p>Data Controller: Quantum Mirror s.r.o.</p>
+                <p>DPO Email: dpo@quantum-mirror.com</p>
+                <p>According to GDPR, we need your explicit consent for data processing.</p>
+                <p><strong>You must complete this before uploading videos.</strong></p>
+            </div>
+            
+            <div class="gdpr-step">
+                <h3>Step 6 of 6: Review & Confirm</h3>
+                <p>Please review and confirm your choices:</p>
+                
+                <div class="gdpr-checkbox">
+                    <input type="checkbox" id="gdpr-learning">
+                    <label for="gdpr-learning">AI Learning - Allow AI to learn from our conversations to improve your experience</label>
+                </div>
+                <div class="gdpr-checkbox">
+                    <input type="checkbox" id="gdpr-research">
+                    <label for="gdpr-research">Research Data - Share anonymized data for research purposes</label>
+                </div>
+                <div class="gdpr-checkbox">
+                    <input type="checkbox" id="gdpr-thirdparty">
+                    <label for="gdpr-thirdparty">Third-Party Sharing - Allow sharing data with trusted partners</label>
+                </div>
+                
+                <div class="gdpr-actions">
+                    <button class="btn-gdpr-confirm" onclick="saveGDPRSettings()">
+                        <i class="fas fa-check-circle"></i> Confirm All & Continue
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-    <script src="quantum-core.js"></script>
-    <!-- PRIDAJ TENTO BLOK KÓDU DO TVOJHO index.html, NAPR. PRED </body> -->
-<section id="settings-section" style="padding: 40px; max-width: 800px; margin: 0 auto; background: rgba(10, 10, 40, 0.6); border-radius: 20px; margin-top: 50px;">
-    <h2>Settings</h2>
-    <p>Configure your Quantum Mirror experience</p>
 
-    <!-- Privacy Settings Block -->
-    <div class="settings-block" style="margin-top: 30px; padding: 25px; background: rgba(255,255,255,0.05); border-radius: 15px;">
-        <h3>Privacy Settings</h3>
-        
-        <!-- AI Learning Checkbox -->
-        <div class="checkbox-item" style="margin: 15px 0; display: flex; align-items: center;">
-            <input type="checkbox" id="privacy-ai-learning" style="margin-right: 12px; transform: scale(1.3);">
-            <label for="privacy-ai-learning" style="font-size: 1.1rem;">
-                <strong>AI Learning</strong> – Learn from our conversations
-            </label>
-        </div>
-        <!-- Public Gallery Checkbox -->
-        <div class="checkbox-item" style="margin: 15px 0; display: flex; align-items: center;">
-            <input type="checkbox" id="privacy-gallery" style="margin-right: 12px; transform: scale(1.3);">
-            <label for="privacy-gallery" style="font-size: 1.1rem;">
-                <strong>Public Gallery</strong> – Show my avatar to others
-            </label>
-        </div>
-        <!-- Research Data Checkbox -->
-        <div class="checkbox-item" style="margin: 15px 0; display: flex; align-items: center;">
-            <input type="checkbox" id="privacy-research" style="margin-right: 12px; transform: scale(1.3);">
-            <label for="privacy-research" style="font-size: 1.1rem;">
-                <strong>Research Data</strong> – Share anonymized data
-            </label>
-        </div>
-        
-        <!-- GDPR Status Display -->
-        <div style="margin-top: 25px; padding: 15px; background: rgba(255, 193, 7, 0.1); border-radius: 10px;">
-            <p style="margin: 0; display: flex; align-items: center;">
-                <span style="font-weight: bold; margin-right: 10px;">GDPR Status:</span>
-                <span class="privacy-status" style="color: #ff9800; font-weight: bold;">Not Configured</span>
-            </p>
-            <button onclick="document.getElementById('gdpr-modal').style.display='block'" style="margin-top: 10px; padding: 10px 20px; background: var(--primary-color); color: black; border: none; border-radius: 8px; cursor: pointer;">
-                Edit GDPR Consent
-            </button>
-        </div>
-
-        <!-- Save Button -->
-        <button onclick="savePrivacySettings()" style="margin-top: 30px; padding: 15px 30px; background: var(--accent-color); color: black; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer;">
-            Save Privacy Settings
+    <!-- AR Viewer Modal -->
+    <div id="ar-viewer" style="display: none;">
+        <button class="ar-close-btn" onclick="closeARViewer()">
+            <i class="fas fa-times"></i> Close AR Viewer
         </button>
+        <video id="ar-video" controls autoplay></video>
     </div>
-</section>
 
-<!-- Simple AR Viewer Modal (for video playback) -->
-<div id="ar-viewer" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 10000;">
-    <button onclick="closeARViewer()" style="position: absolute; top: 20px; right: 20px; background: red; color: white; border: none; padding: 10px; z-index: 10001; cursor: pointer;">✕ Close</button>
-    <video id="ar-video" controls autoplay style="width: 100%; height: 100%; object-fit: contain;"></video>
-</div>
+    <!-- JavaScript -->
+    <script src="quantum-core.js"></script>
+    
+    <script>
+        // Particle system
+        function createParticles() {
+            const particleCount = 80;
+            const directions = ['up', 'down', 'left', 'right'];
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 8 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                const startX = Math.random() * 100;
+                const startY = Math.random() * 100;
+                particle.style.left = `${startX}%`;
+                particle.style.top = `${startY}%`;
+                
+                const direction = directions[Math.floor(Math.random() * directions.length)];
+                let animationName = '';
+                switch(direction) {
+                    case 'up': animationName = 'particleFloatUp'; break;
+                    case 'down': animationName = 'particleFloatDown'; break;
+                    case 'left': animationName = 'particleFloatLeft'; break;
+                    case 'right': animationName = 'particleFloatRight'; break;
+                }
+                
+                const duration = Math.random() * 30 + 20;
+                const delay = Math.random() * 5;
+                particle.style.animation = `${animationName} ${duration}s ${delay}s linear infinite`;
+                
+                if (direction === 'up' || direction === 'down') {
+                    particle.style.setProperty('--particle-move-x', `${Math.random() * 100 - 50}px`);
+                } else {
+                    particle.style.setProperty('--particle-move-y', `${Math.random() * 100 - 50}px`);
+                }
+                
+                document.body.appendChild(particle);
+            }
+        }
+        
+        // Video preview
+        document.getElementById('video-upload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const preview = document.getElementById('preview-player');
+                preview.src = URL.createObjectURL(file);
+                document.getElementById('video-preview').style.display = 'block';
+            }
+        });
+        
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Theme selector
+        document.querySelectorAll('.theme-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.theme-option').forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                
+                const theme = this.getAttribute('data-theme');
+                document.body.className = '';
+                if (theme !== 'default') {
+                    document.body.classList.add(`theme-${theme}`);
+                }
+            });
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            // Check GDPR status
+            if (localStorage.getItem('gdprConsentGiven') === 'true') {
+                document.getElementById('avatar-creation').classList.remove('disabled');
+            }
+        });
+    </script>
 </body>
 </html>
