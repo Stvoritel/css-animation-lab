@@ -319,28 +319,44 @@ function startARView(avatarId) {
         showNotification("Avatar not found!", "error");
         return;
     }
-    
-    showNotification("Starting AR viewer... Make sure to allow camera access.", "info");
-    
-    // Update avatar stats
-    avatar.stats.arSessions++;
-    localStorage.setItem('userAvatars', JSON.stringify(userAvatars));
-    
+
+    showNotification("Preparing your avatar for AR...", "info");
+
     // Unlock AR Explorer achievement
     if (!achievements.arExplorer) {
         achievements.arExplorer = true;
         localStorage.setItem('achievements', JSON.stringify(achievements));
         unlockAchievement('arExplorer');
     }
+
+    // SIMPLE VIDEO PLAYBACK - This fixes the error!
+    // 1. Create a simple video element
+    const videoPlayer = document.createElement('video');
+    videoPlayer.src = avatar.videoUrl;
+    videoPlayer.controls = true;
+    videoPlayer.autoplay = true;
+    videoPlayer.style.width = '100%';
+    videoPlayer.style.maxWidth = '600px';
+    videoPlayer.style.borderRadius = '15px';
+    videoPlayer.style.margin = '20px auto';
+    videoPlayer.style.display = 'block';
+
+    // 2. Show it in a modal/notification instead of non-existent AR viewer
+    showNotification(`🎬 Now playing: ${avatar.name}`, "info");
     
-    // Simulate AR opening
+    // 3. Add video player to the page temporarily
+    const container = document.getElementById('created-avatars-container') || document.body;
+    const existingPlayer = document.getElementById('temp-video-player');
+    if (existingPlayer) existingPlayer.remove();
+    
+    videoPlayer.id = 'temp-video-player';
+    container.appendChild(videoPlayer);
+    
+    // Optional: Auto-remove after 30 seconds
     setTimeout(() => {
-        document.getElementById('ar-viewer').style.display = 'block';
-        document.getElementById('ar-video').src = avatar.videoUrl;
-        
-        // Add AR controls
-        setupARControls();
-    }, 1000);
+        const player = document.getElementById('temp-video-player');
+        if (player) player.remove();
+    }, 30000);
 }
 
 function setupARControls() {
