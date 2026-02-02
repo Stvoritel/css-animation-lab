@@ -704,5 +704,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('#agreePrivacy, #agreeTerms, #agreeAge').forEach(cb => {
         cb.addEventListener('change', () => quantumMirror.checkFinalConsent());
     });
-});
 / Quantum Mirror core - initial upload
